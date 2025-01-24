@@ -7,7 +7,7 @@ We would like to extend our heartfelt thanks to all the contributors who have he
 - **[Jorge Fernández]** ([https://github.com/fsjorgeluis]) - Developer
 - **[Franklin Gabriel Guerra]** ([https://github.com/AlphaTechnolog]) - Developer
 - **[Jesús Guerra]** ([https://github.com/jags1906]) - Developer
-- **[Andrea Acosta]*** ([https://www.instagram.com/sugarlycream/]) - Designer
+- **[Andrea Acosta]** ([https://www.instagram.com/sugarlycream/]) - Designer
 - **[Manuel Palacios]** ([https://www.youtube.com/@manuelpalacios4413]) - Sound Designer
 
 ## Want to contribute?
