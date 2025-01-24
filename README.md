@@ -6,7 +6,7 @@
 ░▀░░░▀░▀░▀░▀░░░░░▀▀▀░░░░░▀░░░▀░▀░▀▀▀░▀▀░░▀▀▀░▀░▀
 ```
 
-> ![NOTE]
+> [!NOTE]
 > This section is a WIP
 
 ## Getting started
