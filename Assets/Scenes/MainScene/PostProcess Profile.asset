@@ -107,7 +107,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   _color:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 0, b: 0, a: 1}
   _bleed:
     m_OverrideState: 1

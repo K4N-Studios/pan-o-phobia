@@ -14,8 +14,8 @@ TagManager:
   - EnemyLayer
   - Collectable
   - PostProcess
-  - 
-  - 
+  - PlayerLayer
+  - Interactable
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WallsSortingLayer
+    uniqueID: 2092046227
+    locked: 0
+  - name: PlayerSortingLayer
+    uniqueID: 2460986615
     locked: 0
