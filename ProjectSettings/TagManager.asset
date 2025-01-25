@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerLayer
   - Water
   - UI
-  - 
-  - 
+  - EnemyLayer
+  - Collectable
   - 
   - 
   - 
