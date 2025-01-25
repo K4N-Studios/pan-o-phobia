@@ -1,0 +1,16 @@
+{
+  "name": "www.nulltale.vhsfx",
+  "displayName": "VhsFx",
+  "version": "1.9.1",
+  "unity": "2022.1",
+  "description": "Vhs visual effect for Unity Urp",
+  "author": {
+    "name": "NullTale",
+    "email": "nulltale@gmail.com",
+    "url": "https://x.com/NullTale"
+  },
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "10.10.6"
+  },
+  "hideInEditor": false
+}
