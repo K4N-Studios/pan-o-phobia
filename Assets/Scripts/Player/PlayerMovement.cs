@@ -26,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (_flashLight != null)
         {
-            float angle = Mathf.Atan2(_lastMovementDirection.x * -1, _lastMovementDirection.y) * Mathf.Rad2Deg;
-            _flashLight.rotation = Quaternion.Euler(0, 0, angle);
+            float angle = Mathf.Atan2(_lastMovementDirection.y, _lastMovementDirection.x) * Mathf.Rad2Deg;
+            _flashLight.rotation = Quaternion.Euler(0, 0, angle - 90);
         }
     }
 
