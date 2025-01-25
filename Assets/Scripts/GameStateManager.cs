@@ -11,8 +11,21 @@ public class CollectableRegister
 
 public class GameStateManager : MonoBehaviour
 {
-    public bool enabledMainLightSwitch = false;
+    public GameObject postProcess;
+    private bool _enabledMainLightSwitch = false;
+
     [SerializeField] public List<CollectableRegister> collectedCollectables = new();
+
+    public bool enabledMainLightSwitch
+    {
+        get => _enabledMainLightSwitch;
+
+        set
+        {
+            _enabledMainLightSwitch = value;
+            postProcess.SetActive(!value);
+        }
+    }
 
     public void RegisterCollectable(string name)
     {
