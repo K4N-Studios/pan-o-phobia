@@ -861,7 +861,8 @@ GameObject:
   - component: {fileID: 380385446}
   - component: {fileID: 380385445}
   - component: {fileID: 380385444}
-  m_Layer: 7
+  - component: {fileID: 380385447}
+  m_Layer: 10
   m_Name: BedRoomLightSwitch_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,6 +945,24 @@ Transform:
   - {fileID: 1452965326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &380385447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380385443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe3c623b5efc49ec9d81497bf052aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalLight: {fileID: 290992182}
+  _lowIntensityLevel: 0.15
+  _maxIntensityLevel: 1
+  _timerTime: 10
+  _lightIsTurnedOn: 0
+  _timerIsRunning: 0
 --- !u!1 &417065423
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,7 +3051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452965326}
   - component: {fileID: 1452965327}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: BedRoomLightSwitchSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
