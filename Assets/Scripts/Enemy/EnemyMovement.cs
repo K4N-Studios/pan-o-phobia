@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform _player;
 
     private int _currentPatrolIndex = 0;
+    [SerializeField] private bool _isChasing = false;
 
     private void Start()
     {
@@ -23,6 +24,10 @@ public class EnemyMovement : MonoBehaviour
         {
             if (_movementType == MovementType.Patrol)
             {
+                if (_isChasing)
+                {
+                    yield break;
+                }
                 yield return Patrol();
             }
             else
@@ -68,7 +73,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-   private void ChasePlayer()
+    private void ChasePlayer()
     {
         if (_player == null) return;
 
