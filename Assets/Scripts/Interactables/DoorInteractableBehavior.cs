@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorInteractableBehavior : MonoBehaviour
 {
     public GameStateManager gameState;
+    public UnityEvent OnOpen;
     [SerializeField] private List<CollectableRegister> _openRequirements = new();
 
     private bool IsLocked()
@@ -25,6 +27,10 @@ public class DoorInteractableBehavior : MonoBehaviour
 
     public void OpenDoor()
     {
-        Debug.Log("door is locked? " + (IsLocked() ? "true" : "false"));
+        Debug.Log("OpenDoor(): " + IsLocked());
+        if (!IsLocked())
+        {
+            OnOpen.Invoke();
+        }
     }
 }
