@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 
+  m_ApplyToSortingLayers: 00000000f7acaf92
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1874,6 +1874,26 @@ PrefabInstance:
     - target: {fileID: 1000000000000001, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000000000007, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000000000000005, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000000000000005, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2092046227
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000000000000007, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000000000000007, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2092046227
       objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
       propertyPath: m_TileSpriteArray.Array.size
@@ -15851,7 +15871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1030125428
 MonoBehaviour:
   m_ObjectHideFlags: 0
