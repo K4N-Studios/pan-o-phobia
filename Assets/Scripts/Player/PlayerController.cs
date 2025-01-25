@@ -9,5 +9,6 @@ public class PlayerController : MonoBehaviour
     {
         _playerMovement.HandleMovementInput();
         _playerInteraction.HandleInteractionInput();
+        _playerMovement.HandleFlashLightMovement();
     }
 }
