@@ -3944,6 +3944,10 @@ PrefabInstance:
       value: BedRoomLightSwitch
       objectReference: {fileID: 0}
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 130824590}
+    - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
       propertyPath: globalLight
       value: 
       objectReference: {fileID: 290992182}
