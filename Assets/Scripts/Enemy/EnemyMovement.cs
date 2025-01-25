@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -8,10 +6,52 @@ public class EnemyMovement : MonoBehaviour
     public enum MovementType { Stationary, Patrol, Chase }
     [SerializeField] private MovementType _movementType = MovementType.Stationary;
     [SerializeField] private Transform[] _patrolPoints;
-    [SerializeField] private float _movementSpeed = 2f;
+    [SerializeField] private float _patrolSpeed = 2f;
+    [SerializeField] private float _chaseSpeed = 4f;
     [SerializeField] private Transform _player;
 
     private int _currentPatrolIndex = 0;
+
+    private void Start()
+    {
+        StartCoroutine(PatrolRoutine());
+    }
+
+    private IEnumerator PatrolRoutine()
+    {
+        while (true)
+        {
+            if (_movementType == MovementType.Patrol)
+            {
+                yield return Patrol();
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
+
+    private IEnumerator Patrol()
+    {
+        if (_patrolPoints.Length == 0)
+        {
+            yield break;
+        }
+
+        var point = _patrolPoints[_currentPatrolIndex];
+
+        while (Vector2.Distance(transform.position, point.position) > 0.1f)
+        {
+            MoveTowards(point.position, _patrolSpeed);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Length;
+    }
+
 
     public void HandleMovement()
     {
@@ -28,30 +68,16 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void Patrol()
-    {
-        if (_patrolPoints.Length == 0) return;
-
-        Transform targetPosition = _patrolPoints[_currentPatrolIndex];
-        MoveTowards(targetPosition.position);
-
-        if (Vector2.Distance(transform.position, targetPosition.position) < 0.1f)
-        {
-            _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Length;
-        }
-    }
-
-    private void ChasePlayer()
+   private void ChasePlayer()
     {
         if (_player == null) return;
-        MoveTowards(_player.position);
+
+        MoveTowards(_player.position, _chaseSpeed);
     }
 
-    private void MoveTowards(Vector2 target)
+    private void MoveTowards(Vector2 targetPosition, float speed)
     {
-        Vector3 direction = target - (Vector2)transform.position.normalized;
-        transform.position += direction * _movementSpeed * Time.deltaTime;
-
-        // transform.Translate(movement * _movementSpeed * Time.deltaTime, Space.World);
+        float step = speed * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
     }
 }
