@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - EnemyLayer
+  - Collectable
+  - PostProcess
   - 
   - 
   - 

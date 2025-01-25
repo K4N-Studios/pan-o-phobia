@@ -8,6 +8,10 @@ public class PlayerInteraction : MonoBehaviour
         {
             ExcecuteInteraction();
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ExcecuteRecoverHealth();
+        }
     }
 
     private void ExcecuteInteraction()
@@ -17,5 +21,16 @@ public class PlayerInteraction : MonoBehaviour
         {
             target.Interact();
         }
+    }
+
+    private void ExcecuteRecoverHealth()
+    {
+        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        if (playerHealth.CurrentHealth < playerHealth.MaxHealth)
+        {
+            playerHealth.Heal(30);
+        }
+        
+        return;
     }
 }
