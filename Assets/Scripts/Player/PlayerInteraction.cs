@@ -20,6 +20,12 @@ public class PlayerInteraction : MonoBehaviour
         {
             lightSwitchBehavior.ToggleSwitch();
         }
+
+        if (interactable.TryGetComponent(out TimedSwitchInteractableBehavior timedSwitchBehavior))
+        {
+            Debug.Log("Starting timer of timed switch");
+            timedSwitchBehavior.ToggleSwitch();
+        }
     }
 
     private void InteractWithCollectable(GameObject collectable)
