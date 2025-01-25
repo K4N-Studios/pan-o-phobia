@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 public class TimedSwitchInteractableBehavior : MonoBehaviour
 {
     public Light2D globalLight;
+    public GameStateManager gameState;
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
@@ -16,6 +17,17 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
 
     public void ToggleSwitch()
     {
+        // ignore request because the main switch takes priority.
+        if (gameState.enabledMainLightSwitch)
+        {
+            if (_timerIsRunning)
+            {
+                CancelTimer();
+            }
+
+            return;
+        }
+
         if (!_lightIsTurnedOn)
         {
             // we'll have to turn the light on and then start a timer which will turn it off after x seconds.

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public GameStateManager gameState;
+
     public void HandleInteractionInput()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -23,29 +25,38 @@ public class PlayerInteraction : MonoBehaviour
 
         if (interactable.TryGetComponent(out TimedSwitchInteractableBehavior timedSwitchBehavior))
         {
-            Debug.Log("Starting timer of timed switch");
             timedSwitchBehavior.ToggleSwitch();
+        }
+
+        if (interactable.TryGetComponent(out DoorInteractableBehavior doorBehavior))
+        {
+            doorBehavior.OpenDoor();
         }
     }
 
     private void InteractWithCollectable(GameObject collectable)
     {
-        Debug.Log("collecting collectable: " + collectable);
+        gameState.RegisterCollectable(collectable.name);
         collectable.SetActive(false);
     }
 
     private void ExcecuteInteraction()
     {
-        Collider2D interactable = Physics2D.OverlapCircle(transform.position, 0.5f, LayerMask.GetMask("Collectable") | LayerMask.GetMask("Interactable"));
+        var desiredMasks = LayerMask.GetMask("Collectable") | LayerMask.GetMask("Interactable");
+        var interactable = Physics2D.OverlapCircle(transform.position, 0.5f, desiredMasks);
+
         if (interactable != null && interactable.TryGetComponent(out Interactable target))
         {
             GameObject gameObject = target.Interact();
-
-            var interactableMask = LayerMask.NameToLayer("Interactable");
-            var collectableMask = LayerMask.NameToLayer("Collectable");
-
-            if (gameObject.layer == interactableMask) InteractWithInteractable(gameObject);
-            else if (gameObject.layer == collectableMask) InteractWithCollectable(gameObject);
+            
+            if (gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            {
+                InteractWithInteractable(gameObject);
+            }
+            else if (gameObject.layer == LayerMask.NameToLayer("Collectable"))
+            {
+                InteractWithCollectable(gameObject);
+            }
         }
     }
 
