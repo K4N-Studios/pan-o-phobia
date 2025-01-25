@@ -20,7 +20,6 @@ public class BlinkingText : MonoBehaviour
         if (_isActive)
         {
             _timer = _timer + 0.01f;
-            Debug.Log("Timer: " + Math.Sin(_timer));
 
             _alpha = Math.Sin((_multiplier * _timer)/_retarder) ; 
             Color newColor = _tmp.color;
