@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 7e91e816f92b74ec9a56ed0e695ff9fd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _sepiaMaterial: {fileID: 2100000, guid: 34ba29b14dc474187853d7d7b0f22172, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
