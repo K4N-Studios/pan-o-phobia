@@ -81,19 +81,19 @@ MonoBehaviour:
   active: 1
   _weight:
     m_OverrideState: 1
-    m_Value: 0.389
+    m_Value: 0.362
   _tape:
     m_OverrideState: 1
-    m_Value: 1.5
+    m_Value: 1.71
   _shades:
     m_OverrideState: 0
     m_Value: 0
   _rocking:
     m_OverrideState: 1
-    m_Value: 0.0389
+    m_Value: 0.0701
   _squeeze:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.848
   _density:
     m_OverrideState: 1
     m_Value: 0.2
