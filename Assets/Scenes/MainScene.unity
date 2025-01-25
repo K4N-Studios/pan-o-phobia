@@ -718,7 +718,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.15
+  m_Intensity: 0.45
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 000000009317b27cf7acaf92
@@ -15262,6 +15262,7 @@ Transform:
   - {fileID: 602807634}
   - {fileID: 162322923}
   - {fileID: 79729125}
+  - {fileID: 951638062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &692113279
@@ -15335,7 +15336,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &692113281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15698,12 +15699,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951638058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 692113278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &951638063
 MonoBehaviour:
@@ -16319,7 +16320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1494266283
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17797,7 +17798,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 951638062}
   - {fileID: 1030125429}
   - {fileID: 290992183}
   - {fileID: 692113278}
