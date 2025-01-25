@@ -4,14 +4,15 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public enum MovementType { Stationary, Patrol, Chase }
+    public bool isWaiting = false;
+
     [SerializeField] private MovementType _movementType = MovementType.Stationary;
     [SerializeField] private Transform[] _patrolPoints;
     [SerializeField] private float _patrolSpeed = 2f;
     [SerializeField] private float _chaseSpeed = 4f;
     [SerializeField] private Transform _player;
-
-    private int _currentPatrolIndex = 0;
     [SerializeField] private bool _isChasing = false;
+    private int _currentPatrolIndex = 0;
 
     private void Start()
     {
@@ -52,8 +53,11 @@ public class EnemyMovement : MonoBehaviour
             yield return null;
         }
 
+        isWaiting = true;
+
         yield return new WaitForSeconds(2f);
 
+        isWaiting = false;
         _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Length;
     }
 
