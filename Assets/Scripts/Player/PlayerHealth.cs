@@ -36,7 +36,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void Heal(int ammount)
     {
         _currentHealth += ammount;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealt);
+        _currentHealth = Mathf.Min(_currentHealth, _maxHealt);
+        // _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealt);
         Debug.Log("Player healed " + ammount + " health. Current health: " + _currentHealth);
     }
 }
