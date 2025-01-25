@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class LightSwitchInteractableBehavior : MonoBehaviour
 {
     public Light2D globalLight;
+    public GameStateManager gameState;
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
@@ -16,5 +17,6 @@ public class LightSwitchInteractableBehavior : MonoBehaviour
         else if (globalLight.intensity == _maxIntensityLevel) newIntensity = _lowIntensityLevel;
 
         globalLight.intensity = newIntensity;
+        gameState.enabledMainLightSwitch = globalLight.intensity == _maxIntensityLevel;
     }
 }
