@@ -16,7 +16,7 @@ TagManager:
   - PostProcess
   - PlayerLayer
   - Interactable
-  - 
+  - NonLightTraversable
   - 
   - 
   - 
@@ -41,7 +41,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: WallsSortingLayer
+  - name: NonLightTraversable
     uniqueID: 2092046227
     locked: 0
   - name: PlayerSortingLayer
