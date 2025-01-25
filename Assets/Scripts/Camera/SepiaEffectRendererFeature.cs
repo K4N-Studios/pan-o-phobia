@@ -21,7 +21,7 @@ public class SepiaEffectRendererFeature : ScriptableRendererFeature
             }
 
             var cmd = CommandBufferPool.Get("SepiaEffect");
-            var cameraColorTarget = renderingData.cameraData.renderer.cameraColorTarget;
+            var cameraColorTarget = renderingData.cameraData.renderer.cameraColorTargetHandle;
 
             cmd.Blit(cameraColorTarget, cameraColorTarget, _sepiaMaterial);
             context.ExecuteCommandBuffer(cmd);
