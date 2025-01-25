@@ -937,7 +937,7 @@ Transform:
   m_GameObject: {fileID: 380385443}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.93, y: 0.71, z: 0}
+  m_LocalPosition: {x: 3.43, y: -0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2197,7 +2197,8 @@ GameObject:
   - component: {fileID: 711573450}
   - component: {fileID: 711573449}
   - component: {fileID: 711573448}
-  m_Layer: 7
+  - component: {fileID: 711573451}
+  m_Layer: 10
   m_Name: MasterLightSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2273,13 +2274,28 @@ Transform:
   m_GameObject: {fileID: 711573447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.66, y: 1.98, z: 0}
+  m_LocalPosition: {x: -3.42, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1703496941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711573451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711573447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03bbf458f0d74259a08dc87c59949fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalLight: {fileID: 290992182}
+  _lowIntensityLevel: 0.15
+  _maxIntensityLevel: 1
 --- !u!1 &863924506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,7 +3096,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8425904, b: 0.09518514, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3499,7 +3515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1703496941}
   - component: {fileID: 1703496942}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: BedRoomLightSwitchSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3563,7 +3579,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7735849, g: 0.30428556, b: 0.24448201, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -14,12 +14,32 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    private void InteractWithInteractable(GameObject interactable)
+    {
+        if (interactable.TryGetComponent(out LightSwitchInteractableBehavior lightSwitchBehavior))
+        {
+            lightSwitchBehavior.ToggleSwitch();
+        }
+    }
+
+    private void InteractWithCollectable(GameObject collectable)
+    {
+        Debug.Log("collecting collectable: " + collectable);
+        collectable.SetActive(false);
+    }
+
     private void ExcecuteInteraction()
     {
-        Collider2D interactable = Physics2D.OverlapCircle(transform.position, 0.5f, LayerMask.GetMask("Collectable"));
-        if (interactable != null && interactable.TryGetComponent<Interactable>(out Interactable target))
+        Collider2D interactable = Physics2D.OverlapCircle(transform.position, 0.5f, LayerMask.GetMask("Collectable") | LayerMask.GetMask("Interactable"));
+        if (interactable != null && interactable.TryGetComponent(out Interactable target))
         {
-            target.Interact();
+            GameObject gameObject = target.Interact();
+
+            var interactableMask = LayerMask.NameToLayer("Interactable");
+            var collectableMask = LayerMask.NameToLayer("Collectable");
+
+            if (gameObject.layer == interactableMask) InteractWithInteractable(gameObject);
+            else if (gameObject.layer == collectableMask) InteractWithCollectable(gameObject);
         }
     }
 
