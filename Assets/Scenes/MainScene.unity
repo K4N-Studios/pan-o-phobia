@@ -500,6 +500,8 @@ GameObject:
   - component: {fileID: 263194355}
   - component: {fileID: 263194354}
   - component: {fileID: 263194359}
+  - component: {fileID: 263194361}
+  - component: {fileID: 263194360}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -550,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a8ea43061ba4c49a7e88130f9b035e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWaiting: 0
   _movementType: 1
   _patrolPoints:
   - {fileID: 2083476070}
@@ -634,6 +637,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &263194360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263194353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7373e5186335a46fba9d6004f2fef9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepsEmitter: {fileID: 263194361}
+  _enemyMovement: {fileID: 263194356}
+--- !u!114 &263194361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263194353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 456378154
+      Data2: 1087474256
+      Data3: 1293115811
+      Data4: 1494154258
+    Path: event:/Footsteps/EnemyFootsteps
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params:
+  - Name: Parameter 1
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &302189482
 GameObject:
   m_ObjectHideFlags: 0
