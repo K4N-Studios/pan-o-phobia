@@ -10,11 +10,14 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
+    [SerializeField] private float _timerDefaultTime = 10f;
     [SerializeField] private float _timerTime = 10f;
     [SerializeField] private bool _lightIsTurnedOn = false;
     [SerializeField] private bool _timerIsRunning = false;
 
     public float ShutdownTimerProgress => _timerTime;
+    public float DefaultTimerTime => _timerDefaultTime;
+    public bool TimerIsRunning => _timerIsRunning;
 
     private void TrynaPlaySFX()
     {
@@ -22,6 +25,11 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
         {
             sfxToggleEventEmitter.Play();
         }
+    }
+
+    private void SetCachedValue(bool newValue)
+    {
+        gameState.RegisterLightState(gameObject.name, newValue);
     }
 
     public void ToggleSwitch()
@@ -43,6 +51,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             globalLight.intensity = _maxIntensityLevel;
             _timerIsRunning = true;
             TrynaPlaySFX();
+            SetCachedValue(true);
         }
         else
         {
@@ -50,6 +59,8 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             // timer off, so the timer will stop.
             globalLight.intensity = _lowIntensityLevel;
             CancelTimer();
+            TrynaPlaySFX();
+            SetCachedValue(false);
         }
     }
 
@@ -67,6 +78,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             globalLight.intensity = _lowIntensityLevel;
             CancelTimer();
             TrynaPlaySFX();
+            SetCachedValue(false);
         }
     }
 
