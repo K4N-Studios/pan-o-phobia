@@ -1832,6 +1832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 602807634}
   - component: {fileID: 602807635}
+  - component: {fileID: 602807636}
   m_Layer: 12
   m_Name: PlayerSprite
   m_TagString: Untagged
