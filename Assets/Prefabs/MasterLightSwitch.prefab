@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3432829409129119540}
   - component: {fileID: 6092076757665750233}
   m_Layer: 10
-  m_Name: BedRoomLightSwitchSprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6219174175554577708}
   - component: {fileID: 1685172764088521254}
   - component: {fileID: 8451101477290150980}
+  - component: {fileID: 4630826261427492622}
   m_Layer: 10
   m_Name: MasterLightSwitch
   m_TagString: Untagged
@@ -192,5 +193,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalLight: {fileID: 0}
+  gameState: {fileID: 0}
+  sfxToggleEventEmitter: {fileID: 4630826261427492622}
   _lowIntensityLevel: 0.15
   _maxIntensityLevel: 1
+--- !u!114 &4630826261427492622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894231452746871337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1779176117
+      Data2: 1264833875
+      Data3: -1893299039
+      Data4: -533357723
+    Path: event:/Actions/SwitchToggle
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
