@@ -27,6 +27,19 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    public CollectableRegister GetCollectable(string name)
+    {
+        foreach (var collectable in collectedCollectables)
+        {
+            if (collectable.Name == name)
+            {
+                return collectable;
+            }
+        }
+
+        return null;
+    }
+
     public void RegisterCollectable(string name)
     {
         var existingElement = collectedCollectables.FirstOrDefault(x => x.Name == name);

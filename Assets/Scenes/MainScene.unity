@@ -307,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &162322923
 Transform:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000f7acaf923dd1106e7bdc6158cf1c590d
+  m_ApplyToSortingLayers: 000000009317b27cf7acaf923dd1106e7bdc6158cf1c590d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -359,8 +359,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 46.71547
-  m_PointLightOuterAngle: 46.71547
+  m_PointLightInnerAngle: 74.074554
+  m_PointLightOuterAngle: 74.074554
   m_PointLightInnerRadius: 3.95
   m_PointLightOuterRadius: 6.55
   m_ShapeLightParametricSides: 5
@@ -2037,7 +2037,7 @@ Transform:
   m_GameObject: {fileID: 627682690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.93, y: 0.55, z: -0.08785736}
+  m_LocalPosition: {x: 15.04, y: 1.18, z: -0.08785736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15513,6 +15513,7 @@ GameObject:
   - component: {fileID: 692113280}
   - component: {fileID: 692113281}
   - component: {fileID: 692113282}
+  - component: {fileID: 692113283}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -15712,6 +15713,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstepsEmitter: {fileID: 692113281}
+--- !u!114 &692113283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692113271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de83dde6d2f64c75a446d6313e157ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlightCollectable: {fileID: 958144549}
+  flashlightObject: {fileID: 162322924}
+  gameState: {fileID: 130824590}
+  toggleKeyCode: 102
+  _locked: 1
 --- !u!1 &753849952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2000000000000000, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
@@ -16039,7 +16057,7 @@ Transform:
   m_GameObject: {fileID: 958144549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.85, y: 2.99, z: 0}
+  m_LocalPosition: {x: 2, y: 11.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17004,11 +17022,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 223943887
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.870636, b: 0.0047169924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -18451,6 +18469,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1309965597184850688, guid: 17b22e772b3e84ecdbf424eb0ecf6973, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1808400283403061309, guid: 17b22e772b3e84ecdbf424eb0ecf6973, type: 3}
       propertyPath: m_Pivot.x
       value: 0.50000006
@@ -18529,7 +18551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810889681861672510, guid: 17b22e772b3e84ecdbf424eb0ecf6973, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8027388463685683253, guid: 17b22e772b3e84ecdbf424eb0ecf6973, type: 3}
       propertyPath: _multiplier
