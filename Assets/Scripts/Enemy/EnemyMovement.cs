@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -6,13 +8,15 @@ public class EnemyMovement : MonoBehaviour
     public enum EMovementType { Stationary, Patrol, Chase }
     public bool isWaiting = false;
     public float stopChasingTimerDefaultTime = 3f;
+    public EnemySubColliderManager subColliderManager;
 
     private int _currentPatrolIndex = 0;
+
     [SerializeField] private float _stopChasingTimerTime = 3f;
     [SerializeField] private bool _stopChasingTimerRunning = false;
 
     [SerializeField] private EMovementType _movementType = EMovementType.Stationary;
-    [SerializeField] private Transform[] _patrolPoints;
+    [SerializeField] private List<Transform> _patrolPoints;
     [SerializeField] private float _patrolSpeed = 2f;
     [SerializeField] private float _chaseSpeed = 4f;
     [SerializeField] private Transform _player;
@@ -116,7 +120,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator Patrol()
     {
-        if (_patrolPoints.Length == 0 || _isChasing)
+        if (_patrolPoints.Count == 0 || _isChasing)
         {
             yield break;
         }
@@ -139,7 +143,14 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         isWaiting = false;
-        _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Length;
+
+        // reversing to avoid non traversable paths
+        if (_currentPatrolIndex + 1 == _patrolPoints.Count)
+        {
+            _patrolPoints.Reverse();
+        }
+
+        _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
     }
 
     public void HandleMovement()
@@ -166,6 +177,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowards(Vector2 targetPosition, float speed)
     {
+        if (subColliderManager.IsColliding == true) return;
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
     }
