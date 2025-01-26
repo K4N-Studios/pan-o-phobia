@@ -43,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
     private void ExcecuteInteraction()
     {
         var desiredMasks = LayerMask.GetMask("Collectable") | LayerMask.GetMask("Interactable");
-        var interactable = Physics2D.OverlapCircle(transform.position, 0.5f, desiredMasks);
+        var interactable = Physics2D.OverlapCircle(transform.position, 1f, desiredMasks);
 
         if (interactable != null && interactable.TryGetComponent(out Interactable target))
         {

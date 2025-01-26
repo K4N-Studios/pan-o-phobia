@@ -4,6 +4,7 @@ using FMODUnity;
 public class EnemyAudioManager : MonoBehaviour
 {
     public StudioEventEmitter footstepsEmitter;
+
     [SerializeField] private EnemyMovement _enemyMovement;
 
     private void Awake()
@@ -25,6 +26,11 @@ public class EnemyAudioManager : MonoBehaviour
     // if enemy contains enemymovement script it means it will always be moving prolly
     private bool IsEnemyMoving()
     {
-        return _enemyMovement.isWaiting == false;
+        return _enemyMovement.MovementType switch
+        {
+            EnemyMovement.EMovementType.Patrol => !_enemyMovement.isWaiting,
+            EnemyMovement.EMovementType.Chase => !_enemyMovement.subColliderManager.IsColliding,
+            _ => false,
+        };
     }
 }

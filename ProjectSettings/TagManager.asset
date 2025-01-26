@@ -17,7 +17,7 @@ TagManager:
   - PlayerLayer
   - Interactable
   - NonLightTraversable
-  - 
+  - Player
   - 
   - 
   - 
@@ -46,4 +46,13 @@ TagManager:
     locked: 0
   - name: PlayerSortingLayer
     uniqueID: 2460986615
+    locked: 0
+  - name: Doors
+    uniqueID: 1846595901
+    locked: 0
+  - name: Switches
+    uniqueID: 1482808443
+    locked: 0
+  - name: RealFront
+    uniqueID: 223943887
     locked: 0
