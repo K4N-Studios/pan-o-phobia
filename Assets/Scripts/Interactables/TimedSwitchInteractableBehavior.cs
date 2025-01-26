@@ -1,4 +1,4 @@
-using System.Net;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -6,6 +6,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
 {
     public Light2D globalLight;
     public GameStateManager gameState;
+    public StudioEventEmitter sfxToggleEventEmitter;
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
@@ -14,6 +15,14 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
     [SerializeField] private bool _timerIsRunning = false;
 
     public float ShutdownTimerProgress => _timerTime;
+
+    private void TrynaPlaySFX()
+    {
+        if (!sfxToggleEventEmitter.IsPlaying())
+        {
+            sfxToggleEventEmitter.Play();
+        }
+    }
 
     public void ToggleSwitch()
     {
@@ -33,6 +42,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             // we'll have to turn the light on and then start a timer which will turn it off after x seconds.
             globalLight.intensity = _maxIntensityLevel;
             _timerIsRunning = true;
+            TrynaPlaySFX();
         }
         else
         {
@@ -56,6 +66,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             // when the timer gets done, the light will be turned off and the timer will be reset.
             globalLight.intensity = _lowIntensityLevel;
             CancelTimer();
+            TrynaPlaySFX();
         }
     }
 

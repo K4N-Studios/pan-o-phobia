@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -5,6 +6,7 @@ public class LightSwitchInteractableBehavior : MonoBehaviour
 {
     public Light2D globalLight;
     public GameStateManager gameState;
+    public StudioEventEmitter sfxToggleEventEmitter;
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
@@ -18,5 +20,10 @@ public class LightSwitchInteractableBehavior : MonoBehaviour
 
         globalLight.intensity = newIntensity;
         gameState.enabledMainLightSwitch = globalLight.intensity == _maxIntensityLevel;
+
+        if (!sfxToggleEventEmitter.IsPlaying())
+        {
+            sfxToggleEventEmitter.Play();
+        }
     }
 }
