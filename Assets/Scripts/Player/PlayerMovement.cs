@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        _isMoving = !(_movementInput.x == 0 && _movementInput.y == 0);
+        _isMoving = !(_movementInput == Vector2.zero);
         _sprite.flipX = _movementInput.x < 0;
 
         Vector3 movement = new Vector3(_movementInput.x, _movementInput.y, 0) * _movementSpeed * Time.deltaTime;

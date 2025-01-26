@@ -4,8 +4,6 @@ using UnityEngine.Tilemaps;
 public class PlayerInteraction : MonoBehaviour
 {
     public GameStateManager gameState;
-    public Tilemap bubbleTilemap;
-
     public void HandleInteractionInput()
     {
         if (Input.GetKeyDown(KeyCode.E))
