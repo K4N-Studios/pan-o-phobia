@@ -13,7 +13,7 @@ public class PlayerChangeSkin : MonoBehaviour
     [SerializeField] private GameObject Spray;
 
     [SerializeField] private GameStateManager _gameState;
-    
+
     void Update () {
         ChangeSkin();
     }
@@ -26,9 +26,8 @@ public class PlayerChangeSkin : MonoBehaviour
         bool haveSpray = CheckItem(Spray);
 
         if (haveGloves && haveMask) _skin = 1;
-        else if (haveSpray) _skin = 1;
-        else if (haveFlashlight) _skin = 3;
-        else _skin = 0;
+        if (haveSpray) _skin = 1;
+        if (haveFlashlight) _skin = 3;
 
         _animator.SetFloat("ObjectSkin", _skin);
     }
