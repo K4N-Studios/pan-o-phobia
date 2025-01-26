@@ -1259,6 +1259,66 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &488083373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488083367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca20d28ca0cc94d64acb415f5ddf1d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &488083374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488083367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &488083375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488083367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e4769f174284e6faba3368251ecaa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 130824590}
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 488083373}
+        m_TargetAssemblyTypeName: BubbleDoorInteractableBehavior, Assembly-CSharp
+        m_MethodName: TrynaOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _openRequirements:
+  - Name: FaceMask
+    Amount: 1
+  - Name: CleaningGloves
+    Amount: 1
 --- !u!1 &493231409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2084,10 @@ PrefabInstance:
     - target: {fileID: 1000000000000001, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
       propertyPath: m_IsActive
@@ -15201,6 +15265,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 488083369}
+    - targetCorrespondingSourceObject: {fileID: 2000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488083374}
+    - targetCorrespondingSourceObject: {fileID: 2000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488083375}
+    - targetCorrespondingSourceObject: {fileID: 2000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488083373}
     - targetCorrespondingSourceObject: {fileID: 2000000000000005, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 791319061}
@@ -17131,6 +17204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubblesExitDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 5718900666939093693, guid: fb7626a7a0c244932840172eeb059d21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6246544395913199498, guid: fb7626a7a0c244932840172eeb059d21, type: 3}
       propertyPath: gameState
       value: 
@@ -18538,6 +18615,10 @@ PrefabInstance:
     - target: {fileID: 5718900666939093693, guid: fb7626a7a0c244932840172eeb059d21, type: 3}
       propertyPath: m_Name
       value: BedroomDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718900666939093693, guid: fb7626a7a0c244932840172eeb059d21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6246544395913199498, guid: fb7626a7a0c244932840172eeb059d21, type: 3}
       propertyPath: gameState
