@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private float _attackRange = 1f;
+    [SerializeField] private float _attackRange = 2f;
     [SerializeField] private float _attackRate = 3f;
     [SerializeField] private int _damage = 10;
     [SerializeField] private LayerMask _playerLayer;
