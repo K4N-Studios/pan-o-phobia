@@ -37,7 +37,7 @@ public class PlayerFlashlightManager : MonoBehaviour
 
     private void HandleKeys()
     {
-        if (Input.GetKeyDown(toggleKeyCode))
+        if (Input.GetKeyDown(toggleKeyCode) && !_locked)
         {
             SetFlashlightActive(!flashlightObject.gameObject.activeSelf);
         }
