@@ -403,9 +403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &192730654
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1154,9 +1151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &417065425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1283,9 +1277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &488083375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,6 +1310,11 @@ MonoBehaviour:
     Amount: 1
   - Name: CleaningGloves
     Amount: 1
+--- !u!1839735485 &488083378 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 5000000000000004, guid: a6a7c86cf5b3468fb8034b8460717d1d, type: 3}
+  m_PrefabInstance: {fileID: 639196341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &493231409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,9 +1535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &559655634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1717,9 +1710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &584260995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15547,6 +15537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 130824590}
+  bubbleTilemap: {fileID: 488083378}
 --- !u!114 &692113276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16000,9 +15991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &958144551
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16812,9 +16800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1436285587
 GameObject:
   m_ObjectHideFlags: 0
@@ -17150,9 +17135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &1594653387
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17462,9 +17444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &1786677329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17556,9 +17535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421812ce3ac44e0088e48a611c799c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &1796619177
 BoxCollider2D:
   m_ObjectHideFlags: 0
