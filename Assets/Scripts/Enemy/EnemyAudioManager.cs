@@ -29,7 +29,8 @@ public class EnemyAudioManager : MonoBehaviour
         return _enemyMovement.MovementType switch
         {
             EnemyMovement.EMovementType.Patrol => !_enemyMovement.isWaiting,
-            EnemyMovement.EMovementType.Chase => !_enemyMovement.subColliderManager.IsColliding,
+            EnemyMovement.EMovementType.Chase => !_enemyMovement.isWaiting,
+            EnemyMovement.EMovementType.PatrolAndChase => !_enemyMovement.isWaiting,
             _ => false,
         };
     }

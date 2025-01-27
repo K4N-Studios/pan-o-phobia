@@ -1,157 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public enum EMovementType { Stationary, Patrol, Chase }
+    public enum EMovementType { Stationary, Patrol, PatrolAndChase, Chase }
     public bool isWaiting = false;
-    public float stopChasingTimerDefaultTime = 3f;
-    public EnemySubColliderManager subColliderManager;
 
+    [SerializeField] private Transform[] _patrolPoints;
     private int _currentPatrolIndex = 0;
+    private bool _isMovingForward = true;
 
-    [SerializeField] private float _stopChasingTimerTime = 3f;
-    [SerializeField] private bool _stopChasingTimerRunning = false;
 
     [SerializeField] private EMovementType _movementType = EMovementType.Stationary;
-    [SerializeField] private List<Transform> _patrolPoints;
     [SerializeField] private float _patrolSpeed = 2f;
+    [SerializeField] private float _patrolWaitTime = 2f;
     [SerializeField] private float _chaseSpeed = 4f;
+    [SerializeField] private float _minDistanceToChace = 2.25f;
+    [SerializeField] private float _minDistanceToAttack = 1f;
     [SerializeField] private Transform _player;
-    [SerializeField] private bool _isChasing = false;
-    [SerializeField] private bool _trynaFollowPlayer = false;
+    [SerializeField] private LayerMask _playerLayer;
 
     public EMovementType MovementType => _movementType;
 
-    private void ResetStopChasingTimer()
-    {
-        _stopChasingTimerTime = stopChasingTimerDefaultTime;
-    }
-
-    private void CancelStopChasingTimer()
-    {
-        ResetStopChasingTimer();
-        _stopChasingTimerRunning = false;
-    }
-
-    private void Start()
-    {
-        StartCoroutine(PatrolRoutine());
-    }
-
-    private IEnumerator PatrolRoutine()
-    {
-        while (true)
-        {
-            if (_movementType == EMovementType.Patrol)
-            {
-                if (_isChasing)
-                {
-                    yield break;
-                }
-                yield return Patrol();
-            }
-            else
-            {
-                yield return null;
-            }
-        }
-    }
-
-    private void SwitchToChaseMode()
-    {
-        _isChasing = true;
-        _movementType = EMovementType.Chase;
-    }
-
-    private void SwitchToPatrolMode()
-    {
-        _isChasing = false;
-        _movementType = EMovementType.Patrol;
-    }
-
-    // This will make the timer restart when the trigger goes out.
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (_trynaFollowPlayer && other.gameObject.CompareTag("Player"))
-        {
-            if (_stopChasingTimerRunning)
-            {
-                Debug.Log("Stopping running timer");
-                CancelStopChasingTimer();
-            }
-
-            if (!_isChasing && _movementType == EMovementType.Patrol)
-            {
-                Debug.Log("Starting to follow player");
-                SwitchToChaseMode();
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (_trynaFollowPlayer && other.gameObject.CompareTag("Player"))
-        {
-            if (!_stopChasingTimerRunning)
-            {
-                _stopChasingTimerRunning = true;
-                _stopChasingTimerTime = stopChasingTimerDefaultTime;
-                Debug.Log("Collision timer has been reset and started");
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (_stopChasingTimerRunning == true)
-        {
-            _stopChasingTimerTime -= Time.deltaTime;
-            if (_trynaFollowPlayer && _stopChasingTimerTime <= 0.0f)
-            {
-                Debug.Log("Lost player after three seconds without no more collider impact");
-                CancelStopChasingTimer();
-                SwitchToPatrolMode();
-            }
-        }
-    }
-
-    private IEnumerator Patrol()
-    {
-        if (_patrolPoints.Count == 0 || _isChasing)
-        {
-            yield break;
-        }
-
-        var point = _patrolPoints[_currentPatrolIndex];
-
-        while (Vector2.Distance(transform.position, point.position) > 0.1f)
-        {
-            if (_isChasing)
-            {
-                yield break;
-            }
-
-            MoveTowards(point.position, _patrolSpeed);
-            yield return null;
-        }
-
-        isWaiting = true;
-
-        yield return new WaitForSeconds(2f);
-
-        isWaiting = false;
-
-        // reversing to avoid non traversable paths
-        if (_currentPatrolIndex + 1 == _patrolPoints.Count)
-        {
-            _patrolPoints.Reverse();
-        }
-
-        _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
-    }
 
     public void HandleMovement()
     {
@@ -165,20 +37,85 @@ public class EnemyMovement : MonoBehaviour
             case EMovementType.Chase:
                 ChasePlayer();
                 break;
+            case EMovementType.PatrolAndChase:
+                PatrolAndChase();
+                break;
         }
+    }
+
+    private void Patrol()
+    {
+        if (transform.position != _patrolPoints[_currentPatrolIndex].position)
+        {
+            MoveTowards(_patrolPoints[_currentPatrolIndex].position, _patrolSpeed);
+        } 
+        else if (!isWaiting)
+        {
+            StartCoroutine(StopPatrolling());
+        }
+    }
+
+    private IEnumerator StopPatrolling()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(_patrolWaitTime);
+
+        if (_isMovingForward)
+        {
+            _currentPatrolIndex++;
+            if (_currentPatrolIndex >= _patrolPoints.Length)
+            {
+                _isMovingForward = false;
+                _currentPatrolIndex = _patrolPoints.Length - 2;
+            }
+        }
+        else
+        {
+            _currentPatrolIndex--;
+            if (_currentPatrolIndex < 0)
+            {
+                _isMovingForward = true;
+                _currentPatrolIndex = 1;
+            }
+        }
+        isWaiting = false;
     }
 
     private void ChasePlayer()
     {
         if (_player == null) return;
 
+        if (Vector2.Distance(transform.position, _player.position) < _minDistanceToAttack)
+        {
+            isWaiting = true;
+            return;
+        }
+        isWaiting = false;
         MoveTowards(_player.position, _chaseSpeed);
+    }
+
+    private void PatrolAndChase()
+    {
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, _minDistanceToChace, _playerLayer);
+        if (playerCollider == null)
+        {
+            Patrol();
+        }
+        else
+        {
+            ChasePlayer();
+        }
     }
 
     private void MoveTowards(Vector2 targetPosition, float speed)
     {
-        if (subColliderManager.IsColliding == true) return;
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, _minDistanceToChace);
     }
 }
