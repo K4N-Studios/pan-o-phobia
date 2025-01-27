@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 263194354}
   - component: {fileID: 263194362}
   - component: {fileID: 263194361}
+  - component: {fileID: 263194363}
   - component: {fileID: 263194360}
   m_Layer: 6
   m_Name: Enemy
@@ -424,6 +425,13 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  _sfxAttackEventRef:
+    Guid:
+      Data1: 2121220027
+      Data2: 1176689609
+      Data3: 1680116113
+      Data4: -1309269057
+    Path: event:/Enemy/GermAttacks
 --- !u!114 &263194356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,9 +534,7 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params:
-  - Name: Parameter 1
-    Value: 0
+  Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
@@ -567,6 +573,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.25
+--- !u!114 &263194363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263194353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -691297028
+      Data2: 1154062447
+      Data3: -1374527327
+      Data4: -1539729357
+    Path: event:/Enemy/GermSound
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &276760220
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +965,7 @@ MonoBehaviour:
   firstDoor: {fileID: 1268040986}
   secondDoor: {fileID: 328164151}
   player: {fileID: 692113271}
+  _fadeSeconds: 0.5
 --- !u!4 &337801045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9075169361869206706, guid: e65cf17f7d9a24a94aa306287b516c7d, type: 3}
@@ -3275,6 +3313,7 @@ MonoBehaviour:
   firstDoor: {fileID: 1268040986}
   secondDoor: {fileID: 328164151}
   player: {fileID: 692113271}
+  _fadeSeconds: 0.5
 --- !u!1 &1268681070
 GameObject:
   m_ObjectHideFlags: 0
@@ -18843,6 +18882,7 @@ MonoBehaviour:
   firstDoor: {fileID: 2004797885}
   secondDoor: {fileID: 1967639287}
   player: {fileID: 692113271}
+  _fadeSeconds: 0.5
 --- !u!1 &1988074365
 GameObject:
   m_ObjectHideFlags: 0
@@ -19147,6 +19187,7 @@ MonoBehaviour:
   firstDoor: {fileID: 2004797885}
   secondDoor: {fileID: 1967639287}
   player: {fileID: 692113271}
+  _fadeSeconds: 0.5
 --- !u!1001 &2015959924
 PrefabInstance:
   m_ObjectHideFlags: 0

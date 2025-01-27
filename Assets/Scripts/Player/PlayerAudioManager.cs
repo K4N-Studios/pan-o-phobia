@@ -11,6 +11,10 @@ public class PlayerAudioManager : MonoBehaviour
         {
             footstepsEmitter.Play();
         }
+        else if (!IsPlayerMoving() && footstepsEmitter.IsPlaying())
+        {
+            footstepsEmitter.Stop();
+        }
     }
 
     private bool IsPlayerMoving()
