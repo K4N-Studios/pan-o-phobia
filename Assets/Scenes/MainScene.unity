@@ -255,6 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 130824591}
   - component: {fileID: 130824590}
+  - component: {fileID: 130824593}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -292,6 +293,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &130824593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130824589}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f72af8692224850a5f144577324303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvent:
+    Guid:
+      Data1: 1077114479
+      Data2: 1154752812
+      Data3: -677344070
+      Data4: 1557632735
+    Path: event:/Music/Main track
 --- !u!1 &162322922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3209,73 @@ Transform:
   - {fileID: 1548702613}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &986048453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2122184468114841265, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+  m_PrefabInstance: {fileID: 3993998340598941617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &986048459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986048453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1334328653
+      Data2: 1263355765
+      Data3: -5993047
+      Data4: -1564208196
+    Path: event:/Actions/LightSwitch/Off
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &986048460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986048453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1535962550
+      Data2: 1120498903
+      Data3: 965086360
+      Data4: 1267984809
+    Path: event:/Actions/LightSwitch/On
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1016732565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20677,6 +20764,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1245036317}
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      propertyPath: sfxLightSwitchOn
+      value: 
+      objectReference: {fileID: 986048460}
+    - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      propertyPath: sfxLightSwitchOff
+      value: 
+      objectReference: {fileID: 986048459}
+    - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
       propertyPath: _lowIntensityLevel
       value: 0
       objectReference: {fileID: 0}
@@ -20731,7 +20826,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2122184468114841265, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 986048460}
+    - targetCorrespondingSourceObject: {fileID: 2122184468114841265, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 986048459}
   m_SourcePrefab: {fileID: 100100000, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
 --- !u!1001 &7789409583383850697
 PrefabInstance:

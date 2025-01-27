@@ -416,6 +416,9 @@ MonoBehaviour:
   - Master
   Banks:
   - Enemies
+  - LightSwitchOff
+  - LightSwitchOn
+  - Main BG
   - Player
   BanksToLoad: []
   LiveUpdatePort: 9264

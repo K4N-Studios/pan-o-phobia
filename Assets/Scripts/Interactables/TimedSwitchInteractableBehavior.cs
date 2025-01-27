@@ -6,7 +6,8 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
 {
     public Light2D globalLight;
     public GameStateManager gameState;
-    public StudioEventEmitter sfxToggleEventEmitter;
+    public StudioEventEmitter sfxLightSwitchOn;
+    public StudioEventEmitter sfxLightSwitchOff;
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
@@ -18,14 +19,6 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
     public float ShutdownTimerProgress => _timerTime;
     public float DefaultTimerTime => _timerDefaultTime;
     public bool TimerIsRunning => _timerIsRunning;
-
-    private void TrynaPlaySFX()
-    {
-        if (!sfxToggleEventEmitter.IsPlaying())
-        {
-            sfxToggleEventEmitter.Play();
-        }
-    }
 
     private void SetCachedValue(bool newValue)
     {
@@ -50,7 +43,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             // we'll have to turn the light on and then start a timer which will turn it off after x seconds.
             globalLight.intensity = _maxIntensityLevel;
             _timerIsRunning = true;
-            TrynaPlaySFX();
+            sfxLightSwitchOn.Play();
             SetCachedValue(true);
         }
         else
@@ -58,8 +51,8 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
             // if it gets here it means that the user wants to cancel the timer because they wants to turns the
             // timer off, so the timer will stop.
             globalLight.intensity = _lowIntensityLevel;
+            sfxLightSwitchOff.Play();
             CancelTimer();
-            TrynaPlaySFX();
             SetCachedValue(false);
         }
     }
@@ -76,8 +69,8 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
         {
             // when the timer gets done, the light will be turned off and the timer will be reset.
             globalLight.intensity = _lowIntensityLevel;
+            sfxLightSwitchOff.Play();
             CancelTimer();
-            TrynaPlaySFX();
             SetCachedValue(false);
         }
     }
@@ -98,7 +91,7 @@ public class TimedSwitchInteractableBehavior : MonoBehaviour
         if (_timerTime <= 0.0f)
         {
             OnTimerEnded();
-            _timerTime = 10.0f;
+            _timerTime = _timerDefaultTime;
         }
     }
 }
