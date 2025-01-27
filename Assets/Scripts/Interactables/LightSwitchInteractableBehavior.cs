@@ -6,7 +6,8 @@ public class LightSwitchInteractableBehavior : MonoBehaviour
 {
     public Light2D globalLight;
     public GameStateManager gameState;
-    public StudioEventEmitter sfxToggleEventEmitter;
+    public StudioEventEmitter sfxLightSwitchOn;
+    public StudioEventEmitter sfxLightSwitchOff;
 
     [SerializeField] private float _lowIntensityLevel = 0.15f;
     [SerializeField] private float _maxIntensityLevel = 1f;
@@ -21,9 +22,9 @@ public class LightSwitchInteractableBehavior : MonoBehaviour
         globalLight.intensity = newIntensity;
         gameState.enabledMainLightSwitch = globalLight.intensity == _maxIntensityLevel;
 
-        if (!sfxToggleEventEmitter.IsPlaying())
-        {
-            sfxToggleEventEmitter.Play();
-        }
+        var isOn = newIntensity == _maxIntensityLevel;
+
+        if (isOn) sfxLightSwitchOn.Play();
+        else sfxLightSwitchOff.Play();
     }
 }
