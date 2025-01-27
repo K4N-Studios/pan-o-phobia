@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class ScopedLightTimerComponent : MonoBehaviour
@@ -22,25 +24,24 @@ public class ScopedLightTimerComponent : MonoBehaviour
     {
         if (element.TryGetComponent(out TimedSwitchInteractableBehavior timedSwitchBehavior))
         {
-            if (timedSwitchBehavior.TimerIsRunning)
-            {
-                var secondsLeft = timedSwitchBehavior.ShutdownTimerProgress;
-                var roundedTime = Math.Round(secondsLeft);
-                _image.fillAmount = secondsLeft / timedSwitchBehavior.DefaultTimerTime;
+            Assert.IsTrue(timedSwitchBehavior.TimerIsRunning);
 
-                if (roundedTime >= 10)
-                {
-                    _label.SetText(roundedTime + "s");
-                }
-                else if (roundedTime == 0)
-                {
-                    _label.SetText("");
-                }
-                else
-                {
-                    // ui being ui moment
-                    _label.SetText(" " + roundedTime + "s");
-                }
+            var secondsLeft = timedSwitchBehavior.ShutdownTimerProgress;
+            var roundedTime = math.round(secondsLeft);
+
+            _image.fillAmount = secondsLeft / timedSwitchBehavior.DefaultTimerTime;
+
+            if (roundedTime >= 10)
+            {
+                _label.SetText(roundedTime + "s");
+            }
+            else if (roundedTime == 0)
+            {
+                _label.SetText("");
+            }
+            else
+            {
+                _label.SetText(" " + roundedTime + "s");
             }
         }
     }
@@ -49,6 +50,12 @@ public class ScopedLightTimerComponent : MonoBehaviour
     {
         var possibleMatch = gameState.lightsStates.FindAll(x => x.IsOn == true).LastOrDefault();
         _image.enabled = possibleMatch != null;
+
+        // reset text if image has been reset.
+        if (_image.enabled == false && _label.text != "")
+        {
+            _label.SetText("");
+        }
 
         if (possibleMatch != null)
         {
