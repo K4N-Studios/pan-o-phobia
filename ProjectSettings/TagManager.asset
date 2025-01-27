@@ -14,7 +14,7 @@ TagManager:
   - EnemyLayer
   - Collectable
   - PostProcess
-  - PlayerLayer
+  - 
   - Interactable
   - NonLightTraversable
   - Player
