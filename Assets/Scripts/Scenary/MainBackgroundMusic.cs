@@ -31,13 +31,5 @@ public class MainBackgroundMusic : MonoBehaviour
         _bgInstance.setParameterByName("Dyn Music layer  2", _enableLayer2.GetHashCode());
         _bgInstance.setParameterByName("Dyn Music layer  3", _enableLayer3.GetHashCode());
         _bgInstance.setParameterByName("Dyn Music layer  4", _enableLayer4.GetHashCode());
-
-        if (_bgInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state) == FMOD.RESULT.OK)
-        {
-            if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
-            {
-                _bgInstance.start();
-            }
-        }
     }
 }
