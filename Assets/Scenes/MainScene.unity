@@ -230,6 +230,9 @@ MonoBehaviour:
       Data3: -677344070
       Data4: 1557632735
     Path: event:/Music/Main track
+  _enableLayer2: 0
+  _enableLayer3: 0
+  _enableLayer4: 0
 --- !u!1 &192730652
 GameObject:
   m_ObjectHideFlags: 0

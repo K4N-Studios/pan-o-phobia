@@ -1,21 +1,47 @@
+using System;
 using UnityEngine;
+
+[Flags]
+public enum LayerDim
+{
+    None = 0,
+    Layer2 = 1,
+    Layer3 = 2,
+    Layer4 = 3
+}
 
 public class MainBackgroundMusic : MonoBehaviour
 {
-    private FMOD.Studio.EventInstance instance;
-
     public FMODUnity.EventReference fmodEvent;
+
+    private FMOD.Studio.EventInstance _bgInstance;
+
+    [SerializeField] private bool _enableLayer2 = false;
+    [SerializeField] private bool _enableLayer3 = false;
+    [SerializeField] private bool _enableLayer4 = false;
 
     private void Start()
     {
-        instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-        instance.start();
+        _bgInstance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+        _bgInstance.start();
     }
     
     private void Update()
     {
-        instance.setParameterByName("Dyn Music layer  2", 1);
-        instance.setParameterByName("Dyn Music layer  3", 1);
-        instance.setParameterByName("Dyn Music layer  4", 1);
+        Debug.Log("layer 2 -> " + _enableLayer2);
+        Debug.Log("layer 3 -> " + _enableLayer3);
+        Debug.Log("layer 4 -> " + _enableLayer4);
+
+        _bgInstance.setParameterByName("Dyn Music layer  2", _enableLayer2.GetHashCode());
+        _bgInstance.setParameterByName("Dyn Music layer  3", _enableLayer3.GetHashCode());
+        _bgInstance.setParameterByName("Dyn Music layer  4", _enableLayer4.GetHashCode());
+
+        if (_bgInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state) == FMOD.RESULT.OK)
+        {
+            if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+            {
+                _bgInstance.start();
+            }
+        }
     }
 }
