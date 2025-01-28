@@ -416,6 +416,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Enemies
+  - Fears
   - LightSwitchOff
   - LightSwitchOn
   - Main BG

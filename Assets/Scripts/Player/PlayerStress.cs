@@ -54,7 +54,7 @@ public class PlayerStress : MonoBehaviour
         {
             _timerMode = TimerMode.Increase;
             return;
-        }        
+        }
 
         _timerMode = state.enabledMainLightSwitch || flashLightObject.activeSelf
             ? TimerMode.Increase
