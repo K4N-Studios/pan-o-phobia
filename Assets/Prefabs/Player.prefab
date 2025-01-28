@@ -282,7 +282,6 @@ GameObject:
   - component: {fileID: 7469664782035690640}
   - component: {fileID: 6092167325450770155}
   - component: {fileID: 764138158404970876}
-  - component: {fileID: 5350668311921895574}
   - component: {fileID: 6328037376533770424}
   - component: {fileID: 3500247203699405141}
   - component: {fileID: 4046136266757476787}
@@ -359,20 +358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
---- !u!114 &5350668311921895574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6824118871143351667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efac251dcb5e241b5a9fa0a77b427639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthBar: {fileID: 0}
-  _playerHealth: {fileID: 6328037376533770424}
 --- !u!114 &6328037376533770424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +521,6 @@ MonoBehaviour:
   defaultStressTimerTime: 60
   state: {fileID: 0}
   flashLightObject: {fileID: 2282968330496316295}
-  stressSlider: {fileID: 0}
   _stressTimerTime: 60
   _stressTimerRunning: 0
   _timerMode: 1

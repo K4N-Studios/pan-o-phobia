@@ -14,7 +14,6 @@ public class PlayerStress : MonoBehaviour
     public float defaultStressTimerTime = 35.0f;
     public GameStateManager state;
     public GameObject flashLightObject;
-    public Slider stressSlider;
 
     [SerializeField] private float _stressTimerTime = 35.0f;
     [SerializeField] private bool _stressTimerRunning = false;
@@ -55,7 +54,7 @@ public class PlayerStress : MonoBehaviour
         {
             _timerMode = TimerMode.Increase;
             return;
-        }        
+        }
 
         _timerMode = state.enabledMainLightSwitch || flashLightObject.activeSelf
             ? TimerMode.Increase
@@ -83,11 +82,6 @@ public class PlayerStress : MonoBehaviour
         Debug.Log("Game over!");
         CancelTimer();
     }
-
-    private void UpdateSlider()
-    {
-        stressSlider.value = StressAmount / 100;
-    }
     
     private void Update()
     {
@@ -95,7 +89,6 @@ public class PlayerStress : MonoBehaviour
         {
             RunTimer();
             CheckForTimerMode();
-            UpdateSlider();
 
             if (_stressTimerTime <= 0.0f)
             {
