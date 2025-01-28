@@ -20,6 +20,7 @@ public class GameStateManager : MonoBehaviour
 {
     public GameObject postProcess;
     public bool blockControlsRequest = false;
+    public bool duringGameOverSplash = false;
     private bool _enabledMainLightSwitch = false;
 
     [SerializeField] public List<CollectableRegister> collectedCollectables = new();
