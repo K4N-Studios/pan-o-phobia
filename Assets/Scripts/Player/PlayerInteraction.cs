@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 public class PlayerInteraction : MonoBehaviour
 {
     public GameStateManager gameState;
+
     public void HandleInteractionInput()
     {
         if (Input.GetKeyDown(KeyCode.E))

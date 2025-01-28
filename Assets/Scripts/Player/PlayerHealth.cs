@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int _maxHealt = 100;
     private int _currentHealth;
 
     public int MaxHealth => _maxHealt;
     public int CurrentHealth => _currentHealth;
 
-    private void Start()
+    [SerializeField] private int _maxHealt = 100;
+    [SerializeField] private FMODUnity.EventReference _sfxDamageEventRef;
+    [SerializeField] private FMOD.Studio.EventInstance _sfxDamageInstance;
+
+    private void Awake()
     {
         _currentHealth = _maxHealt;
+    }
+
+    private void PlayDamageSFX()
+    {
+        if (_sfxDamageInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE playbackState) == FMOD.RESULT.OK)
+        {
+            if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
+            {
+                _sfxDamageInstance.start();
+            }
+        }
     }
 
     public void TakeDamage(int ammount)
@@ -19,8 +33,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             _currentHealth -= ammount;
         }
+
         Debug.Log("Player took " + ammount + " damage. Current health: " + _currentHealth);
-        
+        PlayDamageSFX();
+
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
@@ -39,5 +55,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Min(_currentHealth, _maxHealt);
         // _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealt);
         Debug.Log("Player healed " + ammount + " health. Current health: " + _currentHealth);
+    }
+
+    private void OnDestroy()
+    {
+        _sfxDamageInstance.release();
     }
 }
