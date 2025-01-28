@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 130824591}
   - component: {fileID: 130824590}
   - component: {fileID: 130824592}
+  - component: {fileID: 130824593}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -196,7 +197,9 @@ MonoBehaviour:
   postProcess: {fileID: 1030125427}
   blockControlsRequest: 0
   collectedCollectables: []
-  lightsStates: []
+  lightsStates:
+  - Name: BubbleZoneLight
+    IsOn: 1
 --- !u!4 &130824591
 Transform:
   m_ObjectHideFlags: 0
@@ -234,6 +237,26 @@ MonoBehaviour:
   _enableLayer2: 0
   _enableLayer3: 0
   _enableLayer4: 0
+--- !u!114 &130824593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130824589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab258398fe7ff40ce9380854f180483b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 130824590}
+  crackingWoodEvent:
+    Guid:
+      Data1: 645730793
+      Data2: 1253914333
+      Data3: 2111770812
+      Data4: 1708034114
+    Path: event:/Fears/CrackingWood
 --- !u!1 &192730652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,6 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca20d28ca0cc94d64acb415f5ddf1d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 130824590}
   playerStress: {fileID: 692113284}
   lightComponent: {fileID: 1401364280}
 --- !u!114 &613767979
