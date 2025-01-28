@@ -483,6 +483,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
+  _sfxDamageEventRef:
+    Guid:
+      Data1: -1985231031
+      Data2: 1339311590
+      Data3: 61949844
+      Data4: 282227282
+    Path: event:/Enemy/GermDamage
 --- !u!114 &263194355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,13 +508,6 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 4096
-  _sfxAttackEventRef:
-    Guid:
-      Data1: 2121220027
-      Data2: 1176689609
-      Data3: 1680116113
-      Data4: -1309269057
-    Path: event:/Enemy/GermAttacks
 --- !u!114 &263194356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,6 +2054,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdef36b18d2a4e89909efd218e33ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &692113301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692113271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40697b12dc43419cb1abeaaaaa1dc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 130824590}
+  attackKeyCode: 114
+  _attackRange: 2
+  _attackRate: 3
+  _damage: 10
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _sfxAttackEventRef:
+    Guid:
+      Data1: -7560831
+      Data2: 1269344458
+      Data3: 220461741
+      Data4: -974805426
+    Path: event:/Spray/PlayerSprayAttack
 --- !u!1 &731749611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,6 +3019,7 @@ RectTransform:
   - {fileID: 343604603}
   - {fileID: 1369004617}
   - {fileID: 563192491}
+  - {fileID: 1736967580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -19402,6 +19430,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 130824590}
     - target: {fileID: 764138158404970876, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: component
+      value: 
+      objectReference: {fileID: 563192492}
+    - target: {fileID: 764138158404970876, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: gameState
       value: 
       objectReference: {fileID: 130824590}
@@ -19485,15 +19517,42 @@ PrefabInstance:
       propertyPath: _gameState
       value: 
       objectReference: {fileID: 130824590}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _sfxDamageEventRef.Path
+      value: event:/Player/PlayerDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _sfxDamageEventRef.Guid.Data1
+      value: 1234773583
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _sfxDamageEventRef.Guid.Data2
+      value: 1104054525
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _sfxDamageEventRef.Guid.Data3
+      value: 270780082
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _sfxDamageEventRef.Guid.Data4
+      value: -958857135
+      objectReference: {fileID: 0}
     - target: {fileID: 6824118871143351667, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7469664782035690640, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _playerAttack
+      value: 
+      objectReference: {fileID: 692113301}
     m_RemovedComponents:
     - {fileID: 8594861730852290879, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6824118871143351667, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 692113301}
     - targetCorrespondingSourceObject: {fileID: 4520964474323840358, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1050484937}
