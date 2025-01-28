@@ -415,13 +415,11 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Backgrounds
   - Enemies
   - Fears
-  - LightSwitchOff
-  - LightSwitchOn
-  - Main BG
-  - OpenClose
   - Player
+  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
