@@ -19,6 +19,7 @@ public class LocalLightsRegister
 public class GameStateManager : MonoBehaviour
 {
     public GameObject postProcess;
+    public bool blockControlsRequest = false;
     private bool _enabledMainLightSwitch = false;
 
     [SerializeField] public List<CollectableRegister> collectedCollectables = new();
@@ -92,6 +93,19 @@ public class GameStateManager : MonoBehaviour
                 Name = name,
                 IsOn = enabled,
             });
+        }
+    }
+
+    public void RequestControlsBlock()
+    {
+        blockControlsRequest = true;
+    }
+
+    public void UnblockControls()
+    {
+        if (blockControlsRequest)
+        {
+            blockControlsRequest = false;
         }
     }
 }
