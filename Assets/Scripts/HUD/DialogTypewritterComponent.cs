@@ -1,6 +1,9 @@
+using TMPro;
+
 using System.Collections.Generic;
 using System.Collections;
-using TMPro;
+using System;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -11,6 +14,8 @@ public class DialogTypewritterComponent : MonoBehaviour
     public float minTransparencyLevel = 0f;
     public float fadeDuration = 0.25f;
     public float typewritterDelay = 0.05f;
+    public float backwardsTypewritterDelay = 0.05f;
+    public bool allowFadeout = true;
     public GameStateManager gameState;
 
     [SerializeField] private UnityEngine.UI.Image _boxImage;
@@ -21,7 +26,8 @@ public class DialogTypewritterComponent : MonoBehaviour
 
     private bool _isRunning = false;
 
-    public bool CanStartSequence => !_isRunning;
+    public bool CanStartSequence { get => !_isRunning; private set => _isRunning = !value; }
+    public event Action OnSequenceComplete;
 
     public bool Active
     {
@@ -109,7 +115,7 @@ public class DialogTypewritterComponent : MonoBehaviour
         {
             var newText = currentText[0..currentCharIndex--];
             label.SetText(newText);
-            yield return new WaitForSeconds(typewritterDelay);
+            yield return new WaitForSeconds(backwardsTypewritterDelay);
         }
     }
 
@@ -136,8 +142,11 @@ public class DialogTypewritterComponent : MonoBehaviour
     {
         _chevron.SetActive(false);
         yield return StartCoroutine(TypewritterBackwards());
-        yield return StartCoroutine(FadeImageOut());
+        if (allowFadeout) yield return StartCoroutine(FadeImageOut());
         yield return StartCoroutine(ResetMetadata());
+        if (allowFadeout) yield return new WaitForSeconds(fadeDuration);
+        OnSequenceComplete?.Invoke();
+        OnSequenceComplete = null;
     }
 
     private void CheckForNextPage()

@@ -45,7 +45,7 @@ public class FearCrackingWoodAudio : MonoBehaviour
 
         // check for the existence of some local element turned on, using the last turned on as it will be probably the only one
         // that's turned on currently and where the user is at.
-        if (localLightsTurnedOn != null && localLightsTurnedOn.IsOn == true)
+        if ((localLightsTurnedOn != null && localLightsTurnedOn.IsOn == true) || gameState.duringGameOverSplash)
         {
             Debug.Log("[FearCrackingWood]: stopping sound");
             StopCrackingWoodSFX();
