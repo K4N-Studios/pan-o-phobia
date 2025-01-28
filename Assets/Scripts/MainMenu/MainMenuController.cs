@@ -8,25 +8,30 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float _elapsedTime = 0f;
     [SerializeField] private float _fadeDuration = 1f;
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject _mainUICanvas;
 
-    void Update()
+    private void Update()
     {
         if (Input.anyKeyDown)
         {
             Debug.Log("Se presionó una tecla. Y empieza el juego");
             StartGameplay();
-            // Aquí puedes agregar la acción que deseas ejecutar
         }
     }
 
-    private void StartGameplay () {
+    private void StartGameplay()
+    {
         Debug.Log("start");
 
         StartCoroutine(FadeToZero());
+    }
+
+    private void ShowUICanvas()
+    {
+        if (_mainUICanvas != null && _mainUICanvas.activeSelf == false)
+        {
+            _mainUICanvas.SetActive(true);
+        }
     }
 
     private IEnumerator FadeToZero()
@@ -45,5 +50,7 @@ public class MainMenuController : MonoBehaviour
 
         // Asegúrate de que el alpha sea exactamente 0 al final
         _canvasGroup.alpha = 0f;
+
+        ShowUICanvas();
     }
 }
