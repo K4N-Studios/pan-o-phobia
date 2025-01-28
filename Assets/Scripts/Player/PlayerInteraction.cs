@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 public class PlayerInteraction : MonoBehaviour
 {
     public GameStateManager gameState;
+    public DialogTypewritterComponent typewritter;
 
     public void HandleInteractionInput()
     {
@@ -39,6 +40,13 @@ public class PlayerInteraction : MonoBehaviour
     {
         gameState.RegisterCollectable(collectable.name);
         collectable.SetActive(false);
+
+        if (typewritter.CanStartSequence)
+        {
+            typewritter.EnqueueText("Player is trying to interact with element");
+            typewritter.EnqueueText("of name: " + collectable.name);
+            typewritter.StartSequence();
+        }
     }
 
     private void ExcecuteInteraction()
