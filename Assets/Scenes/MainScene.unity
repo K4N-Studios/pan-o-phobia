@@ -1393,6 +1393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWaiting: 0
+  _animator: {fileID: 1647912918}
+  _sprite: {fileID: 1647912917}
   _patrolPoints:
   - {fileID: 1477365969}
   - {fileID: 949095049}
@@ -17708,6 +17710,7 @@ GameObject:
   - component: {fileID: 1647912917}
   - component: {fileID: 1647912916}
   - component: {fileID: 1647912915}
+  - component: {fileID: 1647912918}
   m_Layer: 6
   m_Name: ShadowSprite
   m_TagString: Untagged
@@ -17840,6 +17843,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1647912918
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647912913}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6cfc3ba3b6b8462585dbd6991cdb6d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &1736967580 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 162155935170099567, guid: 777e921313a9e41498933cffab634603, type: 3}
