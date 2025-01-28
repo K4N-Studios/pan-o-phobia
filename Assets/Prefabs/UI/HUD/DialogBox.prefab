@@ -170,6 +170,8 @@ MonoBehaviour:
   minTransparencyLevel: 0
   fadeDuration: 0.25
   typewritterDelay: 0.05
+  backwardsTypewritterDelay: 0.05
+  allowFadeout: 1
   gameState: {fileID: 0}
   _boxImage: {fileID: 7543082330843615825}
   _chevron: {fileID: 840932741125099018}
@@ -267,15 +269,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
