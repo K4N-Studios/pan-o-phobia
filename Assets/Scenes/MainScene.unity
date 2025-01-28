@@ -435,11 +435,11 @@ MonoBehaviour:
   _maxHealth: 30
   _sfxDamageEventRef:
     Guid:
-      Data1: -1985231031
-      Data2: 1339311590
-      Data3: 61949844
-      Data4: 282227282
-    Path: event:/Enemy/GermDamage
+      Data1: -156080732
+      Data2: 1184302869
+      Data3: 396396711
+      Data4: 274288924
+    Path: event:/Enemies/GermDamage
 --- !u!114 &263194355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,11 +616,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -691297028
-      Data2: 1154062447
-      Data3: -1374527327
-      Data4: -1539729357
-    Path: event:/Enemy/GermSound
+      Data1: -691259202
+      Data2: 1084095191
+      Data3: -483799920
+      Data4: -1994079665
+    Path: event:/Enemies/GermSound
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
@@ -1359,11 +1359,11 @@ MonoBehaviour:
   _maxHealth: 30
   _sfxDamageEventRef:
     Guid:
-      Data1: -146605054
-      Data2: 1238312065
-      Data3: 932749463
-      Data4: -135792887
-    Path: event:/Enemy/ShadowDamage
+      Data1: -733398124
+      Data2: 1211119169
+      Data3: -623887207
+      Data4: -408506170
+    Path: event:/Enemies/ShadowDamage
 --- !u!114 &464931632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,11 +1457,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1999839077
-      Data2: 1211769114
-      Data3: -867590010
-      Data4: 943902881
-    Path: event:/Enemy/ShadowSound
+      Data1: 1563697389
+      Data2: 1327384147
+      Data3: -1336645703
+      Data4: -1809685813
+    Path: event:/Enemies/ShadowSound
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
@@ -2178,11 +2178,11 @@ MonoBehaviour:
     m_Bits: 64
   _sfxAttackEventRef:
     Guid:
-      Data1: -7560831
-      Data2: 1269344458
-      Data3: 220461741
-      Data4: -974805426
-    Path: event:/Spray/PlayerSprayAttack
+      Data1: -15447760
+      Data2: 1176816016
+      Data3: -693516924
+      Data4: -1741144591
+    Path: event:/Player/PlayerSprayAttack
 --- !u!1 &731749611
 GameObject:
   m_ObjectHideFlags: 0
@@ -20010,6 +20010,10 @@ PrefabInstance:
       propertyPath: state
       value: 
       objectReference: {fileID: 130824590}
+    - target: {fileID: 1646420282647010640, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 692113291}
     - target: {fileID: 1646420282647010640, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: stressSlider
       value: 

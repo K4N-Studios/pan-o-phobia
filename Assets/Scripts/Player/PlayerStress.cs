@@ -14,6 +14,7 @@ public class PlayerStress : MonoBehaviour
     public float defaultStressTimerTime = 35.0f;
     public GameStateManager state;
     public GameObject flashLightObject;
+    public PlayerHealth playerHealth;
 
     [SerializeField] private float _stressTimerTime = 35.0f;
     [SerializeField] private bool _stressTimerRunning = false;
@@ -79,7 +80,7 @@ public class PlayerStress : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Game over!");
+        playerHealth.TakeDamage(playerHealth.MaxHealth);
         CancelTimer();
     }
     
