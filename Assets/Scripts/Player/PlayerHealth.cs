@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -10,10 +12,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private int _maxHealt = 100;
     [SerializeField] private FMODUnity.EventReference _sfxDamageEventRef;
     [SerializeField] private FMOD.Studio.EventInstance _sfxDamageInstance;
+    [SerializeField] private DialogTypewritterComponent _globalMessageTypewritter;
+    [SerializeField] private GameStateManager _gameState;
 
     private void Awake()
     {
         _currentHealth = _maxHealt;
+        _sfxDamageInstance = FMODUnity.RuntimeManager.CreateInstance(_sfxDamageEventRef);
     }
 
     private void PlayDamageSFX()
@@ -40,13 +45,33 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
-            Die();
+            StartCoroutine(Die());
         }
     }
 
-    private void Die()
+    private void TeleportBack()
     {
-        Debug.Log("Player has died");
+        Debug.Log("registered event is running");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator Die()
+    {
+        Debug.Log("TODO: Play faint animation");
+
+        yield return new WaitForSeconds(1f);
+
+        if (_globalMessageTypewritter.CanStartSequence)
+        {
+            _gameState.duringGameOverSplash = true;
+
+            _globalMessageTypewritter.OnSequenceComplete += TeleportBack;
+            _globalMessageTypewritter.EnqueueText("The stress was too much to handle...");
+            _globalMessageTypewritter.EnqueueText("Your journey ends here...");
+            _globalMessageTypewritter.EnqueueText("But don't give up!");
+            _globalMessageTypewritter.EnqueueText("Take a deep breath, rest, and try again.");
+            _globalMessageTypewritter.StartSequence();
+        }
     }
 
     public void Heal(int ammount)

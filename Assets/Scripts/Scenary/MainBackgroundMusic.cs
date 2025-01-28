@@ -20,16 +20,39 @@ public class MainBackgroundMusic : MonoBehaviour
     [SerializeField] private bool _enableLayer3 = false;
     [SerializeField] private bool _enableLayer4 = false;
 
+    [SerializeField] private GameStateManager _gameState;
+
     private void Start()
     {
         _bgInstance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
         _bgInstance.start();
     }
-    
-    private void Update()
+
+    private void UpdateParameters()
     {
         _bgInstance.setParameterByName("Dyn Music layer  2", _enableLayer2.GetHashCode());
         _bgInstance.setParameterByName("Dyn Music layer  3", _enableLayer3.GetHashCode());
         _bgInstance.setParameterByName("Dyn Music layer  4", _enableLayer4.GetHashCode());
+    }
+
+    private void CheckGameOver()
+    {
+        if (_gameState.duringGameOverSplash)
+        {
+            if (_bgInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state) == FMOD.RESULT.OK)
+            {
+                if (state == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+                {
+                    _bgInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    _bgInstance.release();
+                }
+            }
+        }
+    }
+    
+    private void Update()
+    {
+        UpdateParameters();
+        CheckGameOver();
     }
 }
