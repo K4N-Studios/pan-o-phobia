@@ -1070,11 +1070,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1334328653
-      Data2: 1263355765
-      Data3: -5993047
-      Data4: -1564208196
-    Path: event:/Actions/LightSwitch/Off
+      Data1: -57367214
+      Data2: 1245456278
+      Data3: -838308979
+      Data4: 780038105
+    Path: event:/Actions/Switch/Off
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -1101,11 +1101,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1535962550
-      Data2: 1120498903
-      Data3: 965086360
-      Data4: 1267984809
-    Path: event:/Actions/LightSwitch/On
+      Data1: -212392135
+      Data2: 1324023518
+      Data3: 776528263
+      Data4: 929971135
+    Path: event:/Actions/Switch/On
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -3220,11 +3220,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1334328653
-      Data2: 1263355765
-      Data3: -5993047
-      Data4: -1564208196
-    Path: event:/Actions/LightSwitch/Off
+      Data1: -57367214
+      Data2: 1245456278
+      Data3: -838308979
+      Data4: 780038105
+    Path: event:/Actions/Switch/Off
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -3251,11 +3251,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1535962550
-      Data2: 1120498903
-      Data3: 965086360
-      Data4: 1267984809
-    Path: event:/Actions/LightSwitch/On
+      Data1: -212392135
+      Data2: 1324023518
+      Data3: 776528263
+      Data4: 929971135
+    Path: event:/Actions/Switch/On
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
