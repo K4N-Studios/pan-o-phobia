@@ -1689,7 +1689,7 @@ SpriteRenderer:
   m_SortingLayerID: 223943887
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aca327b5e95974f79ab836de142b98de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf87cdf3e5e644fcabcb85b5d4a6f696, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2117,7 +2117,7 @@ SpriteRenderer:
   m_SortingLayerID: 223943887
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cd05d9200a26f406887627c4cda2f87e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 904dda92f0dfb494db9490898a58f2e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17290,7 +17290,7 @@ SpriteRenderer:
   m_SortingLayerID: 223943887
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb40ad839b37e4390a52ba098879d240, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b41b6275b712b4a199e694b08114e90f, type: 3}
   m_Color: {r: 1, g: 0.870636, b: 0.0047169924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17464,7 +17464,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9172e0786a1d6454cb276462cc129c17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a73d251ee6824cf0a23941977f7e8c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -18567,7 +18567,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e33b3873990ed4d8699888975a5c1d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20039,6 +20039,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6092167325450770155, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _state
+      value: 
+      objectReference: {fileID: 130824590}
+    - target: {fileID: 6092167325450770155, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: _animator
       value: 
       objectReference: {fileID: 1050484937}
@@ -20062,6 +20066,10 @@ PrefabInstance:
       propertyPath: _gameState
       value: 
       objectReference: {fileID: 130824590}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1050484937}
     - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: _gameState
       value: 

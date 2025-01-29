@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public int MaxHealth => _maxHealt;
     public int CurrentHealth => _currentHealth;
 
+    [SerializeField] private Animator _animator;
+
     [SerializeField] private int _maxHealt = 100;
     [SerializeField] private FMODUnity.EventReference _sfxDamageEventRef;
     [SerializeField] private FMOD.Studio.EventInstance _sfxDamageInstance;
@@ -57,14 +59,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private IEnumerator Die()
     {
-        Debug.Log("TODO: Play faint animation");
+        _gameState.duringGameOverSplash = true;
+        _animator.SetBool("IsDeath", true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         if (_globalMessageTypewritter.CanStartSequence)
         {
-            _gameState.duringGameOverSplash = true;
-
             _globalMessageTypewritter.OnSequenceComplete += TeleportBack;
             _globalMessageTypewritter.EnqueueText("The stress was too much to handle...");
             _globalMessageTypewritter.EnqueueText("Your journey ends here...");

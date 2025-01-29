@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _flashLight;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private GameStateManager _state;
 
     private bool _isMoving = false;
 
@@ -16,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _movementInput.x = Input.GetAxis("Horizontal");
         _movementInput.y = Input.GetAxis("Vertical");
+
+        if (_state.duringGameOverSplash || _state.blockControlsRequest)
+        {
+            _movementInput = Vector2.zero;
+        }
 
         Move();
         HandleFlashLightMovement();
