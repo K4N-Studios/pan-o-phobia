@@ -12,15 +12,30 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isMoving = false;
 
-
     public void HandleMovementInput()
     {
-        _movementInput.x = Input.GetAxis("Horizontal");
-        _movementInput.y = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
 
         if (_state.duringGameOverSplash || _state.blockControlsRequest)
         {
             _movementInput = Vector2.zero;
+        }
+        else
+        {
+            // Solo permite movimiento en una dirección a la vez
+            if (inputX != 0)
+            {
+                _movementInput = new Vector2(inputX, 0);
+            }
+            else if (inputY != 0)
+            {
+                _movementInput = new Vector2(0, inputY);
+            }
+            else
+            {
+                _movementInput = Vector2.zero;
+            }
         }
 
         Move();
@@ -32,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
         if (_movementInput != Vector2.zero)
         {
             _lastMovementDirection = _movementInput.normalized;
-        } else {
-            _lastMovementDirection = Vector2.down;
         }
 
         if (_flashLight != null)
@@ -45,14 +58,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        _isMoving = !(_movementInput == Vector2.zero);
+        _isMoving = _movementInput != Vector2.zero;
         _sprite.flipX = _movementInput.x < 0;
 
         Vector3 movement = new Vector3(_movementInput.x, _movementInput.y, 0) * _movementSpeed * Time.deltaTime;
-        _animator.SetFloat("MoveX", movement.x);
-        _animator.SetFloat("MoveY", movement.y);
+        _animator.SetFloat("MoveX", _movementInput.x);
+        _animator.SetFloat("MoveY", _movementInput.y);
         _animator.SetFloat("Speed", _isMoving ? 1 : 0);
-
 
         transform.Translate(movement, Space.Self);
     }
