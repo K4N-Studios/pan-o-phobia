@@ -1,19 +1,16 @@
 using UnityEngine;
-using FMODUnity;
 
 public class PlayerAudioManager : MonoBehaviour
 {
-    public StudioEventEmitter footstepsEmitter;
-
     private void Update()
     {
-        if (IsPlayerMoving() && !footstepsEmitter.IsPlaying())
+        if (IsPlayerMoving())
         {
-            footstepsEmitter.Play();
+            FMODSoundManager.Instance.Play(SoundType.PlayerFootsteps);
         }
-        else if (!IsPlayerMoving() && footstepsEmitter.IsPlaying())
+        else
         {
-            footstepsEmitter.Stop();
+            FMODSoundManager.Instance.Stop(SoundType.PlayerFootsteps);
         }
     }
 

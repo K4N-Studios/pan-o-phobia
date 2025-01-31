@@ -2,11 +2,20 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public enum SoundType
 {
-    PlayerWalkSFX,
+    PlayerFootsteps,
     FearCrackingWoodEffect
+}
+
+[Serializable]
+class AudioImplementationUnavailableException : Exception
+{
+    public AudioImplementationUnavailableException() { }
+
+    public AudioImplementationUnavailableException(SoundType sound)
+        : base("Unavailable audio implementation found for sound type: " + sound) { }
 }
 
 public class FMODSoundManager : Singleton<FMODSoundManager>
@@ -39,7 +48,8 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         return type switch
         {
             SoundType.FearCrackingWoodEffect => new FearCrackingWood(instance),
-            _ => throw new NotImplementedException(),
+            SoundType.PlayerFootsteps => new AudioPlayerFootsteps(instance),
+            _ => throw new AudioImplementationUnavailableException(type),
         };
     }
 

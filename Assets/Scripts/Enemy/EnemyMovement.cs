@@ -119,9 +119,6 @@ public class EnemyMovement : MonoBehaviour
             // Calcula la diferencia entre la posición actual y la posición objetivo
             Vector2 movement = moveTo - currentPosition;
 
-            Debug.Log("movement: " + movement);
-            Debug.Log(_animator);
-
             // Actualiza los parámetros del animador
             _animator.SetFloat("MoveX", movement.x * 1000);
             _animator.SetFloat("MoveY", movement.y * 1000);

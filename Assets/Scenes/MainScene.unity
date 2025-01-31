@@ -202,6 +202,14 @@ MonoBehaviour:
           Data3: 1845855653
           Data4: 317656290
         Path: event:/Fears/CrackingWood
+    - Key: 0
+      Value:
+        Guid:
+          Data1: 632507025
+          Data2: 1093344513
+          Data3: -1666260303
+          Data4: 1570103444
+        Path: event:/Footsteps/Footsteps
 --- !u!4 &68096015
 Transform:
   m_ObjectHideFlags: 0
@@ -306,13 +314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 130824590}
-  crackingWoodEvent:
-    Guid:
-      Data1: -1703372324
-      Data2: 1080540429
-      Data3: 1845855653
-      Data4: 317656290
-    Path: event:/Fears/CrackingWood
 --- !u!1 &192730652
 GameObject:
   m_ObjectHideFlags: 0
