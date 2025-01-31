@@ -163,6 +163,60 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &68096013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68096015}
+  - component: {fileID: 68096014}
+  m_Layer: 0
+  m_Name: FMODSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &68096014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68096013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13eba45b3a11b43b188601ecd337385e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _references:
+    _dict:
+    - Key: 1
+      Value:
+        Guid:
+          Data1: -1703372324
+          Data2: 1080540429
+          Data3: 1845855653
+          Data4: 317656290
+        Path: event:/Fears/CrackingWood
+--- !u!4 &68096015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68096013}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.251421, y: -9.486719, z: -0.07947321}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &130824589
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +277,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130824589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19f72af8692224850a5f144577324303, type: 3}
   m_Name: 
@@ -20256,11 +20310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1664451779351010911, guid: 394967774056341e9bccd73e03d576e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.78
+      value: 12.07
       objectReference: {fileID: 0}
     - target: {fileID: 1664451779351010911, guid: 394967774056341e9bccd73e03d576e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.92
+      value: -9.69
       objectReference: {fileID: 0}
     - target: {fileID: 1664451779351010911, guid: 394967774056341e9bccd73e03d576e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20536,3 +20590,4 @@ SceneRoots:
   - {fileID: 1152411222}
   - {fileID: 1603828762}
   - {fileID: 637371491}
+  - {fileID: 68096015}
