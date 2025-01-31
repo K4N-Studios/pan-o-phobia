@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private GameStateManager _state;
 
+    [SerializeField] private bool restrictDiagonalMovement = true; 
+
     private bool _isMoving = false;
 
     public void HandleMovementInput()
@@ -23,18 +25,26 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Solo permite movimiento en una dirección a la vez
-            if (inputX != 0)
+            if (restrictDiagonalMovement)
             {
-                _movementInput = new Vector2(inputX, 0);
-            }
-            else if (inputY != 0)
-            {
-                _movementInput = new Vector2(0, inputY);
+                // Prioriza una sola dirección a la vez
+                if (inputX != 0)
+                {
+                    _movementInput = new Vector2(inputX, 0);
+                }
+                else if (inputY != 0)
+                {
+                    _movementInput = new Vector2(0, inputY);
+                }
+                else
+                {
+                    _movementInput = Vector2.zero;
+                }
             }
             else
             {
-                _movementInput = Vector2.zero;
+                // Movimiento libre, permitiendo diagonales
+                _movementInput = new Vector2(inputX, inputY).normalized;
             }
         }
 
