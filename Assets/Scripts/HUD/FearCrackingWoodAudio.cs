@@ -28,9 +28,4 @@ public class FearCrackingWoodAudio : MonoBehaviour
     {
         CheckForLights();
     }
-
-    private void OnDestroy()
-    {
-        FMODSoundManager.Instance.Release(SoundType.FearCrackingWoodEffect);
-    }
 }

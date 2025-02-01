@@ -210,6 +210,30 @@ MonoBehaviour:
           Data3: -1666260303
           Data4: 1570103444
         Path: event:/Footsteps/Footsteps
+    - Key: 4
+      Value:
+        Guid:
+          Data1: 456378154
+          Data2: 1087474256
+          Data3: 1293115811
+          Data4: 1494154258
+        Path: event:/Footsteps/EnemyFootsteps
+    - Key: 2
+      Value:
+        Guid:
+          Data1: -156080732
+          Data2: 1184302869
+          Data3: 396396711
+          Data4: 274288924
+        Path: event:/Enemies/GermDamage
+    - Key: 3
+      Value:
+        Guid:
+          Data1: -733398124
+          Data2: 1211119169
+          Data3: -623887207
+          Data4: -408506170
+        Path: event:/Enemies/ShadowDamage
 --- !u!4 &68096015
 Transform:
   m_ObjectHideFlags: 0
@@ -488,13 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
-  _sfxDamageEventRef:
-    Guid:
-      Data1: -156080732
-      Data2: 1184302869
-      Data3: 396396711
-      Data4: 274288924
-    Path: event:/Enemies/GermDamage
+  damageSound: 2
 --- !u!114 &263194355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7373e5186335a46fba9d6004f2fef9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepsEmitter: {fileID: 263194361}
   _enemyMovement: {fileID: 263194356}
 --- !u!114 &263194361
 MonoBehaviour:
@@ -1313,7 +1330,6 @@ GameObject:
   - component: {fileID: 464931632}
   - component: {fileID: 464931631}
   - component: {fileID: 464931630}
-  - component: {fileID: 464931629}
   - component: {fileID: 464931636}
   - component: {fileID: 464931627}
   m_Layer: 6
@@ -1335,39 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7373e5186335a46fba9d6004f2fef9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepsEmitter: {fileID: 464931629}
   _enemyMovement: {fileID: 464931633}
---- !u!114 &464931629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464931626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 456378154
-      Data2: 1087474256
-      Data3: 1293115811
-      Data4: 1494154258
-    Path: event:/Footsteps/EnemyFootsteps
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!58 &464931630
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1416,13 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
-  _sfxDamageEventRef:
-    Guid:
-      Data1: -733398124
-      Data2: 1211119169
-      Data3: -623887207
-      Data4: -408506170
-    Path: event:/Enemies/ShadowDamage
+  damageSound: 3
 --- !u!114 &464931632
 MonoBehaviour:
   m_ObjectHideFlags: 0

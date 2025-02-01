@@ -1,37 +1,23 @@
 using UnityEngine;
-using FMODUnity;
 
 public class EnemyAudioManager : MonoBehaviour
 {
-    public StudioEventEmitter footstepsEmitter;
-
+    [SerializeField] private FMODUnity.EventReference _footstepsEvent;
     [SerializeField] private EnemyMovement _enemyMovement;
+
+    private FMODUnity.StudioEventEmitter _eventEmitter;
 
     private void Awake()
     {
-        if (_enemyMovement == null)
-        {
-            _enemyMovement = GetComponent<EnemyMovement>();
-        }
+        _eventEmitter = gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+        _eventEmitter.EventReference = _footstepsEvent;
     }
 
     private void Update()
     {
-        if (IsEnemyMoving() && !footstepsEmitter.IsPlaying())
+        if (!_enemyMovement.isWaiting && !_eventEmitter.IsPlaying())
         {
-            footstepsEmitter.Play();
+            _eventEmitter.Play();
         }
-    }
-
-    // if enemy contains enemymovement script it means it will always be moving prolly
-    private bool IsEnemyMoving()
-    {
-        return _enemyMovement.MovementType switch
-        {
-            EnemyMovement.EMovementType.Patrol => !_enemyMovement.isWaiting,
-            EnemyMovement.EMovementType.Chase => !_enemyMovement.isWaiting,
-            EnemyMovement.EMovementType.PatrolAndChase => !_enemyMovement.isWaiting,
-            _ => false,
-        };
     }
 }
