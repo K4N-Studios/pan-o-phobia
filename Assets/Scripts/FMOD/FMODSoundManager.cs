@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Register new sounds here, also make sure to add the appropiate play behavior after registering a new one.
+/// </summary>
 [Serializable]
 public enum SoundType
 {
@@ -10,6 +14,7 @@ public enum SoundType
     GermEnemyDamage,
     ShadowEnemyDamage,
     EnemyFootsteps,
+    EnemyDeathSound,
 }
 
 [Serializable]
@@ -77,6 +82,7 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             // + Enemy damage sounds ------------------------------------------------------
             SoundType.GermEnemyDamage => new AudioPlayIfNotRunningBehavior(instance),
             SoundType.ShadowEnemyDamage => new AudioPlayIfNotRunningBehavior(instance),
+            SoundType.EnemyDeathSound => new SoundImplementation(instance),
 
             ///////////////////////////////////////////////////////////////////////////////
             _ => throw new AudioImplementationUnavailableException(type),
@@ -88,6 +94,12 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         GetSoundImpl(sound).Play();
     }
 
+    public void PlayOneTime(SoundType sound)
+    {
+        Play(sound);
+        Release(sound);
+    }
+
     public void Stop(SoundType sound, bool fadeout = false)
     {
         GetSoundImpl(sound).Stop(fadeout);
@@ -96,6 +108,7 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     public void Release(SoundType sound)
     {
         GetSoundImpl(sound).Release();
+        _instances.Remove(sound);
     }
 
     /// <summary>
@@ -103,10 +116,9 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     /// </summary>
     private void OnDestroy()
     {
-        foreach (var instance in _instances)
+        foreach (var key in _instances.Keys.ToList())
         {
-            Debug.Log("[FMODSoundManager::OnDestroy] release(): " + instance.Key);
-            instance.Value.release();
+            Release(key);
         }
     }
 }

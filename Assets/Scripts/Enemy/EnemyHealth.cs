@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Debug.Log("Enemy has died");
+        FMODSoundManager.Instance.PlayOneTime(SoundType.EnemyDeathSound);
         Destroy(gameObject);
     }
 }
