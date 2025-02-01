@@ -31,6 +31,16 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         base.Awake();
     }
 
+    public FMODUnity.EventReference? GetSoundEventReference(SoundType soundType)
+    {
+        if (_references.TryGet(soundType, out FMODUnity.EventReference reference))
+        {
+            return reference;
+        }
+
+        return null;
+    }
+
     private FMOD.Studio.EventInstance GetSoundInstance(SoundType soundType)
     {
         if (!_instances.ContainsKey(soundType))

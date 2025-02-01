@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class EnemyAudioManager : MonoBehaviour
 {
-    [SerializeField] private FMODUnity.EventReference _footstepsEvent;
+    [SerializeField] private SoundType _footstepsSound = SoundType.EnemyFootsteps;
     [SerializeField] private EnemyMovement _enemyMovement;
 
     private FMODUnity.StudioEventEmitter _eventEmitter;
 
     private void Awake()
     {
+        FMODUnity.EventReference? reference;
+        if ((reference = FMODSoundManager.Instance.GetSoundEventReference(_footstepsSound)) == null)
+        {
+            return;
+        }
+
         _eventEmitter = gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
-        _eventEmitter.EventReference = _footstepsEvent;
+        _eventEmitter.EventReference = reference.Value;
     }
 
     private void Update()
