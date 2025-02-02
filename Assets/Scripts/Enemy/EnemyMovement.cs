@@ -27,6 +27,9 @@ public class EnemyMovement : MonoBehaviour
 
     public EMovementType MovementType => _movementType;
 
+    [SerializeField] private bool restrictDiagonalMovement = true;
+
+
 
     public void HandleMovement()
     {
@@ -110,26 +113,41 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-        private void MoveTowards(Vector2 targetPosition, float speed)
-        {   
-            float step = speed * Time.deltaTime;
-            Vector2 currentPosition = transform.position;
-            Vector2 moveTo = Vector2.MoveTowards(currentPosition, targetPosition, step);
+    private void MoveTowards(Vector2 targetPosition, float speed)
+    {   
+        float step = speed * Time.deltaTime;
+        Vector2 currentPosition = transform.position;
+        Vector2 direction = (targetPosition - currentPosition).normalized;
 
-            // Calcula la diferencia entre la posición actual y la posición objetivo
-            Vector2 movement = moveTo - currentPosition;
+        Vector2 movement = Vector2.zero;
 
-            // Actualiza los parámetros del animador
-            _animator.SetFloat("MoveX", movement.x * 1000);
-            _animator.SetFloat("MoveY", movement.y * 1000);
-            _animator.SetBool("IsMove", movement.magnitude > 0 );
-
-            _sprite.flipX = movement.x > 0;
-
-
-            // Aplica el movimiento
-            transform.position = moveTo;
+        if (restrictDiagonalMovement)
+        {
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            {
+                movement.x = Mathf.Sign(direction.x); 
+            }
+            else
+            {
+                movement.y = Mathf.Sign(direction.y); 
+            }
         }
+        else
+        {
+            movement = direction; 
+        }
+
+        Vector2 moveTo = currentPosition + (movement * step);
+
+        _animator.SetFloat("MoveX", movement.x);
+        _animator.SetFloat("MoveY", movement.y);
+        _animator.SetBool("IsMove", movement.magnitude > 0);
+
+        _sprite.flipX = movement.x > 0;
+
+        transform.position = moveTo;
+    }
+
 
     void OnDrawGizmosSelected()
     {
