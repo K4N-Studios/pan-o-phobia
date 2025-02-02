@@ -15,6 +15,7 @@ public enum SoundType
     ShadowEnemyDamage,
     EnemyFootsteps,
     EnemyDeathSound,
+    PlayerFlashlightToggle,
 }
 
 [Serializable]
@@ -30,6 +31,9 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 {
     private Dictionary<SoundType, FMOD.Studio.EventInstance> _instances = new();
     [SerializeField] private SerializableDict<SoundType, FMODUnity.EventReference> _references = new();
+
+    [Header("Events requirements")]
+    [SerializeField] private PlayerFlashlightManager _flashlightManager;
 
     protected override void Awake()
     {
@@ -72,6 +76,9 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 
         return type switch
         {
+            // + Player -------------------------------------------------------------------
+            SoundType.PlayerFlashlightToggle => new AudioPlayerFlashlightToggleBehavior(instance, _flashlightManager),
+
             // + Ambient sounds -----------------------------------------------------------
             SoundType.FearCrackingWoodEffect => new AudioPlayIfNotRunningBehavior(instance),
 
