@@ -33,7 +33,6 @@ public class AudioPlayerFlashlightToggleBehavior : SoundImplementation
     {
         var toggleStatus = _flashlightManager.FlashlightIsActive ? FlashlightToggleStatus.On : FlashlightToggleStatus.Off;
         _soundInstance.setParameterByName(_toggleStatusParamName, (float)toggleStatus);
-        Debug.Log("set FlashlightToggleStatus -> " + getParam(_toggleStatusParamName).Value);
         base.Play();
     }
 }
