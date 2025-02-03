@@ -1,5 +1,3 @@
-using UnityEngine;
-
 enum FlashlightToggleStatus
 {
     On,
@@ -17,16 +15,6 @@ public class AudioPlayerFlashlightToggleBehavior : SoundImplementation
     ) : base(instance)
     {
         _flashlightManager = flashlightManager;
-    }
-
-    private float? getParam(string key)
-    {
-        if (_soundInstance.getParameterByName(key, out float value) == FMOD.RESULT.OK)
-        {
-            return value;
-        }
-
-        return null;
     }
 
     public override void Play()

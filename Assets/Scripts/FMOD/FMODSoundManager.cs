@@ -89,7 +89,7 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             // + Enemy damage sounds ------------------------------------------------------
             SoundType.GermEnemyDamage => new AudioPlayIfNotRunningBehavior(instance),
             SoundType.ShadowEnemyDamage => new AudioPlayIfNotRunningBehavior(instance),
-            SoundType.EnemyDeathSound => new SoundImplementation(instance),
+            SoundType.EnemyDeathSound => new AudioPlayIfNotRunningBehavior(instance),
 
             ///////////////////////////////////////////////////////////////////////////////
             _ => throw new AudioImplementationUnavailableException(type),

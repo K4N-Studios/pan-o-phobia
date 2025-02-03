@@ -89,16 +89,17 @@ MonoBehaviour:
     - Key: 5
       Value:
         Guid:
-          Data1: -1396748513
-          Data2: 1201382148
-          Data3: -1605081947
-          Data4: 2145041719
+          Data1: 222935347
+          Data2: 1287320471
+          Data3: 709619634
+          Data4: 928555262
         Path: event:/Enemies/EnemyVanish
     - Key: 6
       Value:
         Guid:
-          Data1: 86515859
-          Data2: 1266121532
-          Data3: -122637673
-          Data4: 130861371
+          Data1: -304256682
+          Data2: 1336023120
+          Data3: 553852311
+          Data4: -1759238851
         Path: event:/Player/FlashlightToggle
+  _flashlightManager: {fileID: 0}

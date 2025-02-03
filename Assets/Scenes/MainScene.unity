@@ -477,6 +477,7 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  restrictDiagonalMovement: 1
 --- !u!114 &263194357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1334,7 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 4096
+  restrictDiagonalMovement: 1
 --- !u!114 &464931634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20365,6 +20367,38 @@ PrefabInstance:
       propertyPath: _flashlightManager
       value: 
       objectReference: {fileID: 5952674523065374067}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data1
+      value: -608337055
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data2
+      value: 1103373724
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data3
+      value: 1606951857
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data4
+      value: -1987220719
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data1
+      value: -304256682
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data2
+      value: 1336023120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data3
+      value: 553852311
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data4
+      value: -1759238851
+      objectReference: {fileID: 0}
     - target: {fileID: 7259209390931934412, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: m_Name
       value: FMODSoundManager
