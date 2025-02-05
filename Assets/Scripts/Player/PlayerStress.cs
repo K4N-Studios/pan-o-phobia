@@ -83,8 +83,8 @@ public class PlayerStress : MonoBehaviour
         playerHealth.TakeDamage(playerHealth.MaxHealth);
         CancelTimer();
     }
-    
-    private void Update()
+
+    public void UpdateStressTimer()
     {
         if (_stressTimerRunning)
         {

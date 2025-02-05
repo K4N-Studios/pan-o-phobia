@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SoundImplementation
 {
     protected FMOD.Studio.EventInstance _soundInstance;
@@ -15,6 +17,26 @@ public class SoundImplementation
         }
 
         return false;
+    }
+
+    public virtual void SetVolume(float newVolume)
+    {
+        Debug.Log("SetVolume(" + newVolume + ")");
+        FMOD.RESULT err;
+        if ((err = _soundInstance.setVolume(newVolume)) != FMOD.RESULT.OK)
+        {
+            Debug.LogError("Unable to set volume of sound " + _soundInstance + " to " + newVolume + ": " + err);
+        }
+    }
+
+    public virtual float GetVolume()
+    {
+        if (_soundInstance.getVolume(out float volume) == FMOD.RESULT.OK)
+        {
+            return volume;
+        }
+
+        return default(float);
     }
 
     public virtual void Play()

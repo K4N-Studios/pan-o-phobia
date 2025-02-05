@@ -16,6 +16,7 @@ public enum SoundType
     EnemyFootsteps,
     EnemyDeathSound,
     PlayerFlashlightToggle,
+    PlayerHeavyBreathing
 }
 
 [Serializable]
@@ -32,8 +33,22 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     private Dictionary<SoundType, FMOD.Studio.EventInstance> _instances = new();
     [SerializeField] private SerializableDict<SoundType, FMODUnity.EventReference> _references = new();
 
-    [Header("Events requirements")]
-    [SerializeField] private PlayerFlashlightManager _flashlightManager;
+    // + Events requirements-------------
+    //   + Player------------------------
+    [SerializeField] private PlayerConfiguration _playerConfiguration;
+    [SerializeField] private PlayerManagers _playerManagers;
+
+    [Serializable]
+    private class PlayerConfiguration
+    {
+        public float _heavyBreathingFadeInDuration = 3.0f;
+    }
+
+    [Serializable]
+    private class PlayerManagers
+    {
+        public PlayerFlashlightManager _flashlightManager;
+    }
 
     protected override void Awake()
     {
@@ -77,7 +92,8 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         return type switch
         {
             // + Player -------------------------------------------------------------------
-            SoundType.PlayerFlashlightToggle => new AudioPlayerFlashlightToggleBehavior(instance, _flashlightManager),
+            SoundType.PlayerFlashlightToggle => new AudioPlayerFlashlightToggleBehavior(instance, flashlightManager: _playerManagers._flashlightManager),
+            SoundType.PlayerHeavyBreathing => new AudioPlayFadedBehavior(instance, fadeInDuration: _playerConfiguration._heavyBreathingFadeInDuration),
 
             // + Ambient sounds -----------------------------------------------------------
             SoundType.FearCrackingWoodEffect => new AudioPlayIfNotRunningBehavior(instance),
@@ -110,6 +126,11 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     public void Stop(SoundType sound, bool fadeout = false)
     {
         GetSoundImpl(sound).Stop(fadeout);
+    }
+
+    public bool IsPlaying(SoundType sound)
+    {
+        return GetSoundImpl(sound).IsPlaying();
     }
 
     public void Release(SoundType sound)

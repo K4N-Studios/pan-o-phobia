@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class PlayerAudioManager : MonoBehaviour
 {
-    private void Update()
+    [SerializeField] private PlayerStress _playerStress;
+    [SerializeField] private float _stressHeavyBreathingPoint = 40.0f;
+
+    private void CheckFootstepsSound()
     {
         if (IsPlayerMoving())
         {
@@ -12,6 +15,26 @@ public class PlayerAudioManager : MonoBehaviour
         {
             FMODSoundManager.Instance.Stop(SoundType.PlayerFootsteps);
         }
+    }
+
+    private void CheckHeavyBreathingSound()
+    {
+        var stress = _playerStress.StressAmount;
+        var isSongPlaying = FMODSoundManager.Instance.IsPlaying(SoundType.PlayerHeavyBreathing);
+        if (stress >= _stressHeavyBreathingPoint && !isSongPlaying)
+        {
+            FMODSoundManager.Instance.Play(SoundType.PlayerHeavyBreathing);
+        }
+        else if (stress < _stressHeavyBreathingPoint && isSongPlaying)
+        {
+            FMODSoundManager.Instance.Stop(SoundType.PlayerHeavyBreathing, fadeout: true);
+        }
+    }
+
+    public void CheckSounds()
+    {
+        CheckFootstepsSound();
+        CheckHeavyBreathingSound();
     }
 
     private bool IsPlayerMoving()
