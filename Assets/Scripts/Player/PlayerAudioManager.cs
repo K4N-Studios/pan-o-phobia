@@ -1,33 +1,38 @@
 using UnityEngine;
 
-public class PlayerAudioManager : MonoBehaviour
+public class PlayerAudioManager : WithSongManager
 {
     [SerializeField] private PlayerStress _playerStress;
     [SerializeField] private float _stressHeavyBreathingPoint = 40.0f;
+
+    [Header("Songs")]
+    [SerializeField] private SoundType _soundFootsteps = SoundType.PlayerFootsteps;
+    [SerializeField] private SoundType _soundHeavyBreathing = SoundType.PlayerHeavyBreathing;
 
     private void CheckFootstepsSound()
     {
         if (IsPlayerMoving())
         {
-            FMODSoundManager.Instance.Play(SoundType.PlayerFootsteps);
+            _soundManager.Play(_soundFootsteps);
         }
         else
         {
-            FMODSoundManager.Instance.Stop(SoundType.PlayerFootsteps);
+            _soundManager.Stop(_soundFootsteps);
         }
     }
 
     private void CheckHeavyBreathingSound()
     {
         var stress = _playerStress.StressAmount;
-        var isSongPlaying = FMODSoundManager.Instance.IsPlaying(SoundType.PlayerHeavyBreathing);
-        if (stress >= _stressHeavyBreathingPoint && !isSongPlaying)
+        var isHeavyBreathingPlaying = _soundManager.IsPlaying(_soundHeavyBreathing);
+
+        if (stress >= _stressHeavyBreathingPoint && !isHeavyBreathingPlaying)
         {
-            FMODSoundManager.Instance.Play(SoundType.PlayerHeavyBreathing);
+            _soundManager.Play(_soundHeavyBreathing);
         }
-        else if (stress < _stressHeavyBreathingPoint && isSongPlaying)
+        else if (stress < _stressHeavyBreathingPoint && isHeavyBreathingPlaying)
         {
-            FMODSoundManager.Instance.Stop(SoundType.PlayerHeavyBreathing, fadeout: true);
+            _soundManager.Stop(_soundHeavyBreathing);
         }
     }
 

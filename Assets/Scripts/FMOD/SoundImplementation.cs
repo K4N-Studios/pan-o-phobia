@@ -21,7 +21,6 @@ public class SoundImplementation
 
     public virtual void SetVolume(float newVolume)
     {
-        Debug.Log("SetVolume(" + newVolume + ")");
         FMOD.RESULT err;
         if ((err = _soundInstance.setVolume(newVolume)) != FMOD.RESULT.OK)
         {
