@@ -1,20 +1,45 @@
 using UnityEngine;
-using FMODUnity;
 
-public class PlayerAudioManager : MonoBehaviour
+public class PlayerAudioManager : WithSongManager
 {
-    public StudioEventEmitter footstepsEmitter;
+    [SerializeField] private PlayerStress _playerStress;
+    [SerializeField] private float _stressHeavyBreathingPoint = 40.0f;
 
-    private void Update()
+    [Header("Songs")]
+    [SerializeField] private SoundType _soundFootsteps = SoundType.PlayerFootsteps;
+    [SerializeField] private SoundType _soundHeavyBreathing = SoundType.PlayerHeavyBreathing;
+
+    private void CheckFootstepsSound()
     {
-        if (IsPlayerMoving() && !footstepsEmitter.IsPlaying())
+        if (IsPlayerMoving())
         {
-            footstepsEmitter.Play();
+            _soundManager.Play(_soundFootsteps);
         }
-        else if (!IsPlayerMoving() && footstepsEmitter.IsPlaying())
+        else
         {
-            footstepsEmitter.Stop();
+            _soundManager.Stop(_soundFootsteps);
         }
+    }
+
+    private void CheckHeavyBreathingSound()
+    {
+        var stress = _playerStress.StressAmount;
+        var isHeavyBreathingPlaying = _soundManager.IsPlaying(_soundHeavyBreathing);
+
+        if (stress >= _stressHeavyBreathingPoint && !isHeavyBreathingPlaying)
+        {
+            _soundManager.Play(_soundHeavyBreathing);
+        }
+        else if (stress < _stressHeavyBreathingPoint && isHeavyBreathingPlaying)
+        {
+            _soundManager.Stop(_soundHeavyBreathing);
+        }
+    }
+
+    public void CheckSounds()
+    {
+        CheckFootstepsSound();
+        CheckHeavyBreathingSound();
     }
 
     private bool IsPlayerMoving()

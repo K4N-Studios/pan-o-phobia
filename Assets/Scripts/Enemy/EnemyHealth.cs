@@ -2,40 +2,22 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    private int _currentHealth;
-
     public int CurrentHealth => _currentHealth;
 
+    private int _currentHealth;
     [SerializeField] private int _maxHealth = 30;
-    [SerializeField] private FMODUnity.EventReference _sfxDamageEventRef;
-    [SerializeField] private FMOD.Studio.EventInstance _sfxDamageInstance;
-
-    private void Awake()
-    {
-        _sfxDamageInstance = FMODUnity.RuntimeManager.CreateInstance(_sfxDamageEventRef);
-    }
+    [SerializeField] private SoundType damageSound;
 
     private void Start()
     {
         _currentHealth = _maxHealth;
     }
 
-    private void PlayDamageSFX()
-    {
-        if (_sfxDamageInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE playbackState) == FMOD.RESULT.OK)
-        {
-            if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
-            {
-                _sfxDamageInstance.start();
-            }
-        }
-    }
-
     public void TakeDamage(int amount)
     {
         _currentHealth -= amount;
         Debug.Log("Enemy took " + amount + " damage. Current health: " + _currentHealth);
-        PlayDamageSFX();
+        FMODSoundManager.Instance.Play(damageSound);
 
         if (_currentHealth <= 0)
         {
@@ -45,12 +27,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Debug.Log("Enemy has died");
+        FMODSoundManager.Instance.PlayOneTime(SoundType.EnemyDeathSound);
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        _sfxDamageInstance.release();
     }
 }

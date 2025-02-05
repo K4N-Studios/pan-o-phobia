@@ -8,12 +8,15 @@ public class PlayerFlashlightManager : MonoBehaviour
     public GameStateManager gameState;
     public KeyCode toggleKeyCode = KeyCode.F;
 
-    [SerializeField] private bool _locked = true;
+    [SerializeField] private bool _locked = false;
+
+    public bool FlashlightIsActive => flashlightObject.gameObject.activeSelf;
 
     private void SetFlashlightActive(bool value)
     {
         if (!flashlightObject) return;
         flashlightObject.gameObject.SetActive(value);
+        FMODSoundManager.Instance.Play(SoundType.PlayerFlashlightToggle);
     }
 
     private void Start()
