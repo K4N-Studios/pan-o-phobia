@@ -5,18 +5,25 @@ using UnityEngine;
 
 /// <summary>
 /// Register new sounds here, also make sure to add the appropiate play behavior after registering a new one.
+/// NOTE: Make sure to register new sounds on the bottom instead of in the middle
+/// because unity will then mess with the order on the inspector when registering
+/// references of fmod instances.
 /// </summary>
 [Serializable]
 public enum SoundType
 {
     PlayerFootsteps,
+    PlayerFlashlightToggle,
+    PlayerHeavyBreathing,
+    PlayerCollapse,
     FearCrackingWoodEffect,
     GermEnemyDamage,
     ShadowEnemyDamage,
     EnemyFootsteps,
     EnemyDeathSound,
-    PlayerFlashlightToggle,
-    PlayerHeavyBreathing
+    PlayerDamage,
+    LightSwitchToggleSound,
+    TimedLightSwitchToggleSound,
 }
 
 [Serializable]
@@ -33,8 +40,11 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     private Dictionary<SoundType, FMOD.Studio.EventInstance> _instances = new();
     [SerializeField] private SerializableDict<SoundType, FMODUnity.EventReference> _references = new();
 
-    // + Events requirements-------------
-    //   + Player------------------------
+#if UNITY_EDITOR
+    [SerializeField] private SerializableDict<SoundType, bool> _activeInstances = new();
+#endif
+
+    // Events requirements
     [SerializeField] private PlayerConfiguration _playerConfiguration;
     [SerializeField] private PlayerManagers _playerManagers;
 
@@ -50,9 +60,24 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         public PlayerFlashlightManager _flashlightManager;
     }
 
-    protected override void Awake()
+    // NOTE: Set this before calling `FMODSoundManager.Instance.Play(SoundType.LightSwitchToggleSound)` as it expects a valid
+    // `LightSwitchInteractableBehavior` to be able to detect if it should play the on or off state.
+    [SerializeField] private LightSwitchInteractableBehavior _inUseLightSwitchInteractable;
+
+    public LightSwitchInteractableBehavior InUseLightSwitchInteractable
     {
-        base.Awake();
+        get => _inUseLightSwitchInteractable;
+        set => _inUseLightSwitchInteractable = value;
+    }
+
+    // NOTE: Set this before calling `FMODSoundManager.Instance.Play(SoundType.TimedLightSwitchToggleSound)` as it expects a valid
+    // `TimedSwitchInteractableBehavior` to be able to detect if it should play the on or off state.
+    [SerializeField] private TimedSwitchInteractableBehavior _inUseTimedSwitchInteractable;
+
+    public TimedSwitchInteractableBehavior InUseTimedSwitchInteractable
+    {
+        get => _inUseTimedSwitchInteractable;
+        set => _inUseTimedSwitchInteractable = value;
     }
 
     public FMODUnity.EventReference? GetSoundEventReference(SoundType soundType)
@@ -71,6 +96,9 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         {
             if (_references.TryGet(soundType, out FMODUnity.EventReference reference))
             {
+#if UNITY_EDITOR
+                _activeInstances.Add(soundType, false);
+#endif
                 _instances.Add(soundType, FMODUnity.RuntimeManager.CreateInstance(reference));
             }
         }
@@ -94,6 +122,8 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             // + Player -------------------------------------------------------------------
             SoundType.PlayerFlashlightToggle => new AudioPlayerFlashlightToggleBehavior(instance, flashlightManager: _playerManagers._flashlightManager),
             SoundType.PlayerHeavyBreathing => new AudioPlayFadedBehavior(instance, fadeInDuration: _playerConfiguration._heavyBreathingFadeInDuration),
+            SoundType.PlayerCollapse => new SoundImplementation(instance),
+            SoundType.PlayerDamage => new AudioPlayIfNotRunningBehavior(instance),
 
             // + Ambient sounds -----------------------------------------------------------
             SoundType.FearCrackingWoodEffect => new AudioPlayIfNotRunningBehavior(instance),
@@ -107,6 +137,10 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             SoundType.ShadowEnemyDamage => new AudioPlayIfNotRunningBehavior(instance),
             SoundType.EnemyDeathSound => new AudioPlayIfNotRunningBehavior(instance),
 
+            // + Map artifacts ------------------------------------------------------------
+            SoundType.LightSwitchToggleSound => new AudioLightSwitchToggleBehavior(instance, _inUseLightSwitchInteractable),
+            SoundType.TimedLightSwitchToggleSound => new AudioTimedLightSwitchToggleBehavior(instance, _inUseTimedSwitchInteractable),
+
             ///////////////////////////////////////////////////////////////////////////////
             _ => throw new AudioImplementationUnavailableException(type),
         };
@@ -114,6 +148,9 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 
     public void Play(SoundType sound)
     {
+#if UNITY_EDITOR
+        _activeInstances.Update(sound, true);
+#endif
         GetSoundImpl(sound).Play();
     }
 
@@ -125,28 +162,48 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 
     public void Stop(SoundType sound, bool fadeout = false)
     {
+#if UNITY_EDITOR
+        _activeInstances.Update(sound, false);
+#endif
         GetSoundImpl(sound).Stop(fadeout);
     }
 
     public bool IsPlaying(SoundType sound)
     {
-        return GetSoundImpl(sound).IsPlaying();
+        var isPlaying = GetSoundImpl(sound).IsPlaying();
+#if UNITY_EDITOR
+        // update just in case.
+        _activeInstances.Update(sound, isPlaying);
+#endif
+        return isPlaying;
     }
 
     public void Release(SoundType sound)
     {
         GetSoundImpl(sound).Release();
         _instances.Remove(sound);
+
+#if UNITY_EDITOR
+        _activeInstances.Remove(sound);
+#endif
     }
 
     /// <summary>
-    /// Deallocates the memory of all allocated fmod event instances
+    /// This function will stop all running fmod sounds and also release them
+    /// NOTE: This will be automatically called on `OnDestroy()` For fmodsoundmanager.
     /// </summary>
-    private void OnDestroy()
+    /// <param name="fadeout"></param>
+    public void ReleaseAndStopAll(bool fadeout = false)
     {
         foreach (var key in _instances.Keys.ToList())
         {
+            Stop(key, fadeout: fadeout);
             Release(key);
         }
+    }
+
+    private void OnDestroy()
+    {
+        ReleaseAndStopAll();
     }
 }

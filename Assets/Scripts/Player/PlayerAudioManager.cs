@@ -4,6 +4,7 @@ public class PlayerAudioManager : WithSongManager
 {
     [SerializeField] private PlayerStress _playerStress;
     [SerializeField] private float _stressHeavyBreathingPoint = 40.0f;
+    [SerializeField] private GameStateManager _state;
 
     [Header("Songs")]
     [SerializeField] private SoundType _soundFootsteps = SoundType.PlayerFootsteps;
@@ -25,6 +26,12 @@ public class PlayerAudioManager : WithSongManager
     {
         var stress = _playerStress.StressAmount;
         var isHeavyBreathingPlaying = _soundManager.IsPlaying(_soundHeavyBreathing);
+
+        if (isHeavyBreathingPlaying && _state.duringGameOverSplash)
+        {
+            _soundManager.Stop(_soundHeavyBreathing, fadeout: false);
+            return;
+        }
 
         if (stress >= _stressHeavyBreathingPoint && !isHeavyBreathingPlaying)
         {

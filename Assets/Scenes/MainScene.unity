@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 130824590}
+  _fearCrackingWoodAudio: 4
 --- !u!1 &192730652
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7373e5186335a46fba9d6004f2fef9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _footstepsSound: 4
+  _footstepsSound: 7
   _enemyMovement: {fileID: 263194356}
 --- !u!58 &263194362
 CircleCollider2D:
@@ -1010,73 +1011,6 @@ MonoBehaviour:
   _heartBrokenStep: 30
   _spriteFull: {fileID: 21300000, guid: e530021fe7be7460e83a9f5d43da5e41, type: 3}
   _spriteBroken: {fileID: 21300000, guid: deed87e5e323d483c986f70c8a209ec8, type: 3}
---- !u!1 &353364938 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2122184468114841265, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
-  m_PrefabInstance: {fileID: 3993998340598941617}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &353364944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353364938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -57367214
-      Data2: 1245456278
-      Data3: -838308979
-      Data4: 780038105
-    Path: event:/Actions/Switch/Off
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &353364945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353364938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -212392135
-      Data2: 1324023518
-      Data3: 776528263
-      Data4: 929971135
-    Path: event:/Actions/Switch/On
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &411133291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2000000000000008, guid: 446abe59d7c84d889303a57258a46acc, type: 3}
@@ -1235,7 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7373e5186335a46fba9d6004f2fef9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _footstepsSound: 4
+  _footstepsSound: 7
   _enemyMovement: {fileID: 464931633}
 --- !u!58 &464931630
 CircleCollider2D:
@@ -2438,7 +2372,6 @@ GameObject:
   - component: {fileID: 951638059}
   - component: {fileID: 951638063}
   - component: {fileID: 951638064}
-  - component: {fileID: 951638065}
   m_Layer: 8
   m_Name: PostProcessCamera
   m_TagString: Untagged
@@ -2585,37 +2518,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 692113278}
   offset: {x: 0, y: 0, z: 0}
---- !u!114 &951638065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951638058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
 --- !u!1 &958144549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,73 +3062,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1230353670 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 894231452746871337, guid: 394967774056341e9bccd73e03d576e6, type: 3}
-  m_PrefabInstance: {fileID: 7789409583383850697}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1230353676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230353670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -57367214
-      Data2: 1245456278
-      Data3: -838308979
-      Data4: 780038105
-    Path: event:/Actions/Switch/Off
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &1230353677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230353670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -212392135
-      Data2: 1324023518
-      Data3: 776528263
-      Data4: 929971135
-    Path: event:/Actions/Switch/On
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1245036316
 GameObject:
   m_ObjectHideFlags: 0
@@ -19630,7 +19465,15 @@ PrefabInstance:
       value: BedRoomLightSwitch
       objectReference: {fileID: 0}
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      propertyPath: _light
+      value: 
+      objectReference: {fileID: 1245036317}
+    - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
       propertyPath: gameState
+      value: 
+      objectReference: {fileID: 130824590}
+    - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
+      propertyPath: _gameState
       value: 
       objectReference: {fileID: 130824590}
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
@@ -19640,11 +19483,11 @@ PrefabInstance:
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
       propertyPath: sfxLightSwitchOn
       value: 
-      objectReference: {fileID: 353364945}
+      objectReference: {fileID: 0}
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
       propertyPath: sfxLightSwitchOff
       value: 
-      objectReference: {fileID: 353364944}
+      objectReference: {fileID: 0}
     - target: {fileID: 2972650214535665634, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
       propertyPath: _lowIntensityLevel
       value: 0
@@ -19704,13 +19547,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2122184468114841265, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 353364945}
-    - targetCorrespondingSourceObject: {fileID: 2122184468114841265, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 353364944}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54ad14276442a473fa4c256292d50ce4, type: 3}
 --- !u!224 &4348227613436244499
 RectTransform:
@@ -20021,6 +19858,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 78801c5300c7f4879bb05e227b0521d6, type: 2}
     - target: {fileID: 9114503498135196881, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _state
+      value: 
+      objectReference: {fileID: 130824590}
+    - target: {fileID: 9114503498135196881, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: _playerStress
       value: 
       objectReference: {fileID: 692113284}
@@ -20277,7 +20118,15 @@ PrefabInstance:
       value: 223943887
       objectReference: {fileID: 0}
     - target: {fileID: 8451101477290150980, guid: 394967774056341e9bccd73e03d576e6, type: 3}
+      propertyPath: _light
+      value: 
+      objectReference: {fileID: 290992182}
+    - target: {fileID: 8451101477290150980, guid: 394967774056341e9bccd73e03d576e6, type: 3}
       propertyPath: gameState
+      value: 
+      objectReference: {fileID: 130824590}
+    - target: {fileID: 8451101477290150980, guid: 394967774056341e9bccd73e03d576e6, type: 3}
+      propertyPath: _gameState
       value: 
       objectReference: {fileID: 130824590}
     - target: {fileID: 8451101477290150980, guid: 394967774056341e9bccd73e03d576e6, type: 3}
@@ -20287,21 +20136,15 @@ PrefabInstance:
     - target: {fileID: 8451101477290150980, guid: 394967774056341e9bccd73e03d576e6, type: 3}
       propertyPath: sfxLightSwitchOn
       value: 
-      objectReference: {fileID: 1230353677}
+      objectReference: {fileID: 0}
     - target: {fileID: 8451101477290150980, guid: 394967774056341e9bccd73e03d576e6, type: 3}
       propertyPath: sfxLightSwitchOff
       value: 
-      objectReference: {fileID: 1230353676}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 894231452746871337, guid: 394967774056341e9bccd73e03d576e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1230353677}
-    - targetCorrespondingSourceObject: {fileID: 894231452746871337, guid: 394967774056341e9bccd73e03d576e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1230353676}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 394967774056341e9bccd73e03d576e6, type: 3}
 --- !u!222 &8076966789929554922
 CanvasRenderer:
@@ -20365,67 +20208,299 @@ PrefabInstance:
       objectReference: {fileID: 5952674523065374067}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.size
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _playerManagers._flashlightManager
       value: 
       objectReference: {fileID: 5952674523065374067}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[7].Key
+      propertyPath: _references._dict.Array.data[0].Key
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[1].Key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[2].Key
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[3].Key
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[4].Key
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[5].Key
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Key
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[7].Value.Path
+      propertyPath: _references._dict.Array.data[7].Key
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[8].Key
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[9].Key
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[10].Key
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[11].Key
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[0].Value.Path
+      value: event:/Footsteps/Footsteps
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[1].Value.Path
+      value: event:/Player/FlashlightToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[2].Value.Path
       value: event:/Player/HearbeatWithHeavyBreathing
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[2].Value.Guid.Data1
-      value: -608337055
+      propertyPath: _references._dict.Array.data[3].Value.Path
+      value: event:/Player/Collapse
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[2].Value.Guid.Data2
-      value: 1103373724
+      propertyPath: _references._dict.Array.data[4].Value.Path
+      value: event:/Player/PlayerDamage
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[2].Value.Guid.Data3
-      value: 1606951857
+      propertyPath: _references._dict.Array.data[5].Value.Path
+      value: event:/Fears/CrackingWood
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[2].Value.Guid.Data4
-      value: -1987220719
+      propertyPath: _references._dict.Array.data[6].Value.Path
+      value: event:/Footsteps/EnemyFootsteps
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[6].Value.Guid.Data1
+      propertyPath: _references._dict.Array.data[7].Value.Path
+      value: event:/Enemies/GermDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[8].Value.Path
+      value: event:/Enemies/ShadowDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[9].Value.Path
+      value: event:/Enemies/EnemyVanish
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[10].Value.Path
+      value: event:/Actions/SwitchToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[11].Value.Path
+      value: event:/Actions/SwitchToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[0].Value.Guid.Data1
+      value: 632507025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[0].Value.Guid.Data2
+      value: 1093344513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[0].Value.Guid.Data3
+      value: -1666260303
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[0].Value.Guid.Data4
+      value: 1570103444
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[1].Value.Guid.Data1
       value: -304256682
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[6].Value.Guid.Data2
+      propertyPath: _references._dict.Array.data[1].Value.Guid.Data2
       value: 1336023120
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[6].Value.Guid.Data3
+      propertyPath: _references._dict.Array.data[1].Value.Guid.Data3
       value: 553852311
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[6].Value.Guid.Data4
+      propertyPath: _references._dict.Array.data[1].Value.Guid.Data4
       value: -1759238851
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[7].Value.Guid.Data1
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data1
       value: 589934644
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[7].Value.Guid.Data2
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data2
       value: 1277509892
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[7].Value.Guid.Data3
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data3
       value: -494500220
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
-      propertyPath: _references._dict.Array.data[7].Value.Guid.Data4
+      propertyPath: _references._dict.Array.data[2].Value.Guid.Data4
       value: 1658721727
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[3].Value.Guid.Data1
+      value: 1446186995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[3].Value.Guid.Data2
+      value: 1274132332
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[3].Value.Guid.Data3
+      value: -1624577100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[3].Value.Guid.Data4
+      value: 1341605495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[4].Value.Guid.Data1
+      value: -557152714
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[4].Value.Guid.Data2
+      value: 1162265854
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[4].Value.Guid.Data3
+      value: -708213602
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[4].Value.Guid.Data4
+      value: 1260227636
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[5].Value.Guid.Data1
+      value: -1703372324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[5].Value.Guid.Data2
+      value: 1080540429
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[5].Value.Guid.Data3
+      value: 1845855653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[5].Value.Guid.Data4
+      value: 317656290
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data1
+      value: -608337055
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data2
+      value: 1103373724
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data3
+      value: 1606951857
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[6].Value.Guid.Data4
+      value: -1987220719
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[7].Value.Guid.Data1
+      value: -156080732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[7].Value.Guid.Data2
+      value: 1184302869
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[7].Value.Guid.Data3
+      value: 396396711
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[7].Value.Guid.Data4
+      value: 274288924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[8].Value.Guid.Data1
+      value: -733398124
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[8].Value.Guid.Data2
+      value: 1211119169
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[8].Value.Guid.Data3
+      value: -623887207
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[8].Value.Guid.Data4
+      value: -408506170
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[9].Value.Guid.Data1
+      value: 222935347
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[9].Value.Guid.Data2
+      value: 1287320471
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[9].Value.Guid.Data3
+      value: 709619634
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[9].Value.Guid.Data4
+      value: 928555262
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[10].Value.Guid.Data1
+      value: 1779176117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[10].Value.Guid.Data2
+      value: 1264833875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[10].Value.Guid.Data3
+      value: -1893299039
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[10].Value.Guid.Data4
+      value: -533357723
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[11].Value.Guid.Data1
+      value: 1779176117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[11].Value.Guid.Data2
+      value: 1264833875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[11].Value.Guid.Data3
+      value: -1893299039
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[11].Value.Guid.Data4
+      value: -533357723
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _playerConfiguration._heavyBreathingFadeInDuration

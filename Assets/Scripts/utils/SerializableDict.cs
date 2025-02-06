@@ -64,4 +64,16 @@ public class SerializableDict<K, V>
             Append(key, value);
         }
     }
+
+    public void Remove(K key)
+    {
+        foreach (var element in _dict)
+        {
+            if (element.Key.Equals(key))
+            {
+                _dict.Remove(element);
+                break;
+            }
+        }
+    }
 }

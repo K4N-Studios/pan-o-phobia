@@ -44,15 +44,20 @@ public class MainBackgroundMusic : MonoBehaviour
                 if (state == FMOD.Studio.PLAYBACK_STATE.PLAYING)
                 {
                     _bgInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                    _bgInstance.release();
+                    Destroy(this);
                 }
             }
         }
     }
-    
+
     private void Update()
     {
         UpdateParameters();
         CheckGameOver();
+    }
+
+    private void OnDestroy()
+    {
+        _bgInstance.release();
     }
 }

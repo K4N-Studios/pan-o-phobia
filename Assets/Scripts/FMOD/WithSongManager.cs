@@ -8,7 +8,7 @@ public class WithSongManager : MonoBehaviour
 {
     protected FMODSoundManager _soundManager;
 
-    private void Awake()
+    protected void Awake()
     {
         _soundManager = FMODSoundManager.Instance;
     }
