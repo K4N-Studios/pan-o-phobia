@@ -36,8 +36,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void HandleAttack()
     {
-        Debug.Log("can attack -> " + CanAttack());
-
         if (!CanAttack())
         {
             return;
@@ -45,11 +43,8 @@ public class PlayerAttack : MonoBehaviour
 
         Collider2D enemy = Physics2D.OverlapCircle(transform.position, _attackRange, _enemyLayer);
 
-        Debug.Log("enemy is found? -> " + enemy != null);
-
         if (enemy != null && enemy.TryGetComponent(out IDamageable target) && Input.GetKeyDown(attackKeyCode))
         {
-            Debug.Log("collision!");
             var enemyHealth = enemy.GetComponent<EnemyHealth>();
 
             if (enemyHealth.CurrentHealth <= 0)

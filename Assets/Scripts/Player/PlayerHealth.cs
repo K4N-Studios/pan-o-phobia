@@ -1,8 +1,9 @@
 using System.Collections;
+using UnityEditor.Rendering.PostProcessing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : WithSongManager, IDamageable
 {
     private int _currentHealth;
 
@@ -12,26 +13,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private Animator _animator;
 
     [SerializeField] private int _maxHealt = 100;
-    [SerializeField] private FMODUnity.EventReference _sfxDamageEventRef;
-    [SerializeField] private FMOD.Studio.EventInstance _sfxDamageInstance;
     [SerializeField] private DialogTypewritterComponent _globalMessageTypewritter;
     [SerializeField] private GameStateManager _gameState;
 
-    private void Awake()
+    [Header("Songs")]
+    [SerializeField] private SoundType _damageSound = SoundType.PlayerDamage;
+    [SerializeField] private SoundType _collapseSound = SoundType.PlayerCollapse;
+
+    private void Start()
     {
         _currentHealth = _maxHealt;
-        _sfxDamageInstance = FMODUnity.RuntimeManager.CreateInstance(_sfxDamageEventRef);
-    }
-
-    private void PlayDamageSFX()
-    {
-        if (_sfxDamageInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE playbackState) == FMOD.RESULT.OK)
-        {
-            if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED)
-            {
-                _sfxDamageInstance.start();
-            }
-        }
     }
 
     public void TakeDamage(int ammount)
@@ -41,8 +32,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             _currentHealth -= ammount;
         }
 
-        Debug.Log("Player took " + ammount + " damage. Current health: " + _currentHealth);
-        PlayDamageSFX();
+        _soundManager.Play(_damageSound);
 
         if (_currentHealth <= 0)
         {
@@ -51,10 +41,23 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
-    private void TeleportBack()
+    private void RestartGame()
     {
-        Debug.Log("registered event is running");
+        _soundManager.ReleaseAndStopAll(fadeout: true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void CreateDyingScene()
+    {
+        if (_globalMessageTypewritter.CanStartSequence)
+        {
+            _globalMessageTypewritter.OnSequenceComplete += RestartGame;
+            _globalMessageTypewritter.EnqueueText("The stress was too much to handle...");
+            _globalMessageTypewritter.EnqueueText("Your journey ends here...");
+            _globalMessageTypewritter.EnqueueText("But don't give up!");
+            _globalMessageTypewritter.EnqueueText("Take a deep breath, rest, and try again.");
+            _globalMessageTypewritter.StartSequence();
+        }
     }
 
     private IEnumerator Die()
@@ -64,15 +67,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(2f);
 
-        if (_globalMessageTypewritter.CanStartSequence)
-        {
-            _globalMessageTypewritter.OnSequenceComplete += TeleportBack;
-            _globalMessageTypewritter.EnqueueText("The stress was too much to handle...");
-            _globalMessageTypewritter.EnqueueText("Your journey ends here...");
-            _globalMessageTypewritter.EnqueueText("But don't give up!");
-            _globalMessageTypewritter.EnqueueText("Take a deep breath, rest, and try again.");
-            _globalMessageTypewritter.StartSequence();
-        }
+        CreateDyingScene();
+
+        yield return new WaitForSeconds(1f);
+
+        _soundManager.Play(_collapseSound);
     }
 
     public void Heal(int ammount)
@@ -81,10 +80,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Min(_currentHealth, _maxHealt);
         // _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealt);
         Debug.Log("Player healed " + ammount + " health. Current health: " + _currentHealth);
-    }
-
-    private void OnDestroy()
-    {
-        _sfxDamageInstance.release();
     }
 }

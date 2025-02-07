@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 6328037376533770424}
   - component: {fileID: 3500247203699405141}
   - component: {fileID: 4046136266757476787}
-  - component: {fileID: 7484174778690838777}
   - component: {fileID: 9114503498135196881}
   - component: {fileID: 53712253298864644}
   - component: {fileID: 1646420282647010640}
@@ -329,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 6092167325450770155}
   _playerInteraction: {fileID: 764138158404970876}
+  _playerAttack: {fileID: 0}
 --- !u!114 &6092167325450770155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +345,7 @@ MonoBehaviour:
   _flashLight: {fileID: 1950712367379152372}
   _animator: {fileID: 8594861730852290879}
   _sprite: {fileID: 2183422511587187974}
+  _state: {fileID: 0}
 --- !u!114 &764138158404970876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
+  typewritter: {fileID: 0}
 --- !u!114 &6328037376533770424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +372,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdef36b18d2a4e89909efd218e33ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _maxHealt: 100
+  _sfxDamageEventRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _globalMessageTypewritter: {fileID: 0}
+  _gameState: {fileID: 0}
 --- !u!61 &3500247203699405141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -443,39 +455,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7484174778690838777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6824118871143351667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 632507025
-      Data2: 1093344513
-      Data3: -1666260303
-      Data4: 1570103444
-    Path: event:/Footsteps/Footsteps
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params:
-  - Name: Parameter 1
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!114 &9114503498135196881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984b79e0fdd3b48198c417a0dce77c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepsEmitter: {fileID: 7484174778690838777}
 --- !u!114 &53712253298864644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +499,7 @@ MonoBehaviour:
   defaultStressTimerTime: 60
   state: {fileID: 0}
   flashLightObject: {fileID: 2282968330496316295}
+  playerHealth: {fileID: 0}
   _stressTimerTime: 60
   _stressTimerRunning: 0
   _timerMode: 1

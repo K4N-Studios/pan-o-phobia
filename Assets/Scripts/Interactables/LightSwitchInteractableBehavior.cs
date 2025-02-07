@@ -1,30 +1,23 @@
-using FMODUnity;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class LightSwitchInteractableBehavior : MonoBehaviour
+public class LightSwitchInteractableBehavior : WithSongManager
 {
-    public Light2D globalLight;
-    public GameStateManager gameState;
-    public StudioEventEmitter sfxLightSwitchOn;
-    public StudioEventEmitter sfxLightSwitchOff;
+    [SerializeField] private Light2D _light;
+    [SerializeField] private GameStateManager _gameState;
+    [SerializeField] private SoundType _lightSwitchToggleSound = SoundType.LightSwitchToggleSound;
 
-    [SerializeField] private float _lowIntensityLevel = 0.15f;
-    [SerializeField] private float _maxIntensityLevel = 1f;
+    [SerializeField] private readonly float _lowIntensityLevel = 0.15f;
+    [SerializeField] private readonly float _maxIntensityLevel = 1f;
+
+    public bool IsOn => _light.intensity == _maxIntensityLevel;
 
     public void ToggleSwitch()
     {
-        var newIntensity = 0.0f;
-
-        if (globalLight.intensity == _lowIntensityLevel) newIntensity = _maxIntensityLevel;
-        else if (globalLight.intensity == _maxIntensityLevel) newIntensity = _lowIntensityLevel;
-
-        globalLight.intensity = newIntensity;
-        gameState.enabledMainLightSwitch = globalLight.intensity == _maxIntensityLevel;
-
-        var isOn = newIntensity == _maxIntensityLevel;
-
-        if (isOn) sfxLightSwitchOn.Play();
-        else sfxLightSwitchOff.Play();
+        var newIntensity = _light.intensity == _maxIntensityLevel ? _lowIntensityLevel : _maxIntensityLevel;
+        _light.intensity = newIntensity;
+        _gameState.enabledMainLightSwitch = newIntensity == _maxIntensityLevel;
+        _soundManager.InUseLightSwitchInteractable = this;
+        _soundManager.Play(_lightSwitchToggleSound);
     }
 }

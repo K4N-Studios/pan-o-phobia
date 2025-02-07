@@ -1,69 +1,37 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class FearCrackingWoodAudio : MonoBehaviour
+public class FearCrackingWoodAudio : WithSongManager
 {
     public GameStateManager gameState;
-    public FMODUnity.EventReference crackingWoodEvent;
 
-    [SerializeField] private FMOD.Studio.EventInstance _crackingWoodInstance;
+    [SerializeField] private SoundType _fearCrackingWoodAudio = SoundType.FearCrackingWoodEffect;
 
-    private void Start()
+    private IEnumerator CheckForLights()
     {
-        _crackingWoodInstance = FMODUnity.RuntimeManager.CreateInstance(crackingWoodEvent);
-    }
+        LocalLightsRegister localLightsTurnedOn = gameState.lightsStates.FindAll(x => x.IsOn == true).LastOrDefault();
+        bool shouldStop = (localLightsTurnedOn != null && localLightsTurnedOn.IsOn == true) || gameState.duringGameOverSplash;
 
-    private void StartCrackingWoodSFX()
-    {
-        if (_crackingWoodInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state) == FMOD.RESULT.OK)
+        Debug.Log("should stop -> " + (shouldStop ? "yes" : "no"));
+
+        // check for the existence of some local element turned on, using the last turned
+        // on as it will be probably the only one that's turned on currently and where the user is at.
+        // FIXME: As this could indirectly create a bug where the current light is at the mid position instead
+        // of at the last one, we should sort the array in a way that the last one is always at the last spot.
+        if (shouldStop)
         {
-            if (state == FMOD.Studio.PLAYBACK_STATE.STOPPED)
-            {
-                _crackingWoodInstance.start();
-            }
-        }
-    }
-
-    private void StopCrackingWoodSFX(bool fadeout = true)
-    {
-        if (_crackingWoodInstance.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state) == FMOD.RESULT.OK)
-        {
-            if (state == FMOD.Studio.PLAYBACK_STATE.PLAYING)
-            {
-                _crackingWoodInstance.stop(fadeout switch
-                {
-                    true => FMOD.Studio.STOP_MODE.ALLOWFADEOUT,
-                    false => FMOD.Studio.STOP_MODE.IMMEDIATE,
-                });
-            }
-        }
-    }
-
-    private void CheckForLights()
-    {
-        var localLightsTurnedOn = gameState.lightsStates.FindAll(x => x.IsOn == true).LastOrDefault();
-
-        // check for the existence of some local element turned on, using the last turned on as it will be probably the only one
-        // that's turned on currently and where the user is at.
-        if ((localLightsTurnedOn != null && localLightsTurnedOn.IsOn == true) || gameState.duringGameOverSplash)
-        {
-            Debug.Log("[FearCrackingWood]: stopping sound");
-            StopCrackingWoodSFX();
+            _soundManager.Stop(_fearCrackingWoodAudio);
         }
         else
         {
-            Debug.Log("[FearCrackingWood]: starting sound");
-            StartCrackingWoodSFX();
+            yield return new WaitForSeconds(1f);
+            _soundManager.Play(_fearCrackingWoodAudio);
         }
     }
 
     private void Update()
     {
-        CheckForLights();
-    }
-
-    private void OnDestroy()
-    {
-        _crackingWoodInstance.release();
+        StartCoroutine(CheckForLights());
     }
 }

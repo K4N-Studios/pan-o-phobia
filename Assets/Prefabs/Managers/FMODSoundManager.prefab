@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7259209390931934412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3080091249734137853}
+  - component: {fileID: 4297731149203819281}
+  m_Layer: 0
+  m_Name: FMODSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3080091249734137853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259209390931934412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.251421, y: -9.486719, z: -0.07947321}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4297731149203819281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259209390931934412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13eba45b3a11b43b188601ecd337385e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _references:
+    _dict:
+    - Key: 1
+      Value:
+        Guid:
+          Data1: -1703372324
+          Data2: 1080540429
+          Data3: 1845855653
+          Data4: 317656290
+        Path: event:/Fears/CrackingWood
+    - Key: 0
+      Value:
+        Guid:
+          Data1: 632507025
+          Data2: 1093344513
+          Data3: -1666260303
+          Data4: 1570103444
+        Path: event:/Footsteps/Footsteps
+    - Key: 4
+      Value:
+        Guid:
+          Data1: 456378154
+          Data2: 1087474256
+          Data3: 1293115811
+          Data4: 1494154258
+        Path: event:/Footsteps/EnemyFootsteps
+    - Key: 2
+      Value:
+        Guid:
+          Data1: -156080732
+          Data2: 1184302869
+          Data3: 396396711
+          Data4: 274288924
+        Path: event:/Enemies/GermDamage
+    - Key: 3
+      Value:
+        Guid:
+          Data1: -733398124
+          Data2: 1211119169
+          Data3: -623887207
+          Data4: -408506170
+        Path: event:/Enemies/ShadowDamage
+    - Key: 5
+      Value:
+        Guid:
+          Data1: 222935347
+          Data2: 1287320471
+          Data3: 709619634
+          Data4: 928555262
+        Path: event:/Enemies/EnemyVanish
+    - Key: 6
+      Value:
+        Guid:
+          Data1: -304256682
+          Data2: 1336023120
+          Data3: 553852311
+          Data4: -1759238851
+        Path: event:/Player/FlashlightToggle
+  _flashlightManager: {fileID: 0}

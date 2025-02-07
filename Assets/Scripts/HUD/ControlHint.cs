@@ -13,8 +13,6 @@ public class ControlHint : MonoBehaviour
 
     public void SetHint(string text, bool isActive)
     {
-        Debug.Log("Setting hint: " + text);
-        Debug.Log("Setting hint active: " + isActive);
         _hintText.text = text;
         _panel.SetActive(isActive);
     }
