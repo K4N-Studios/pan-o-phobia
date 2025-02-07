@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private int _currentHealth;
     [SerializeField] private int _maxHealth = 30;
-    [SerializeField] private SoundType damageSound;
+    [SerializeField] private SoundType damageSound = SoundType.GermEnemyDamage;
 
     private void Start()
     {
