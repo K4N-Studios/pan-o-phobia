@@ -24,6 +24,8 @@ public enum SoundType
     PlayerDamage,
     LightSwitchToggleSound,
     TimedLightSwitchToggleSound,
+    PlayerHeavyBreath,
+    PlayerHeartbeat
 }
 
 [Serializable]
@@ -39,6 +41,8 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 {
     private Dictionary<SoundType, FMOD.Studio.EventInstance> _instances = new();
     [SerializeField] private SerializableDict<SoundType, FMODUnity.EventReference> _references = new();
+
+    public SerializableDict<SoundType, FMODUnity.EventReference> EventReferences => _references;
 
 #if UNITY_EDITOR
     [SerializeField] private SerializableDict<SoundType, bool> _activeInstances = new();

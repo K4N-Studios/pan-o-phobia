@@ -20693,7 +20693,7 @@ PrefabInstance:
       objectReference: {fileID: 5952674523065374067}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _playerManagers._flashlightManager
@@ -20748,6 +20748,14 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[12].Key
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[13].Key
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[0].Value.Path
       value: event:/Footsteps/Footsteps
       objectReference: {fileID: 0}
@@ -20794,6 +20802,14 @@ PrefabInstance:
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[11].Value.Path
       value: event:/Actions/SwitchToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[12].Value.Path
+      value: event:/Player/HeavyBreathing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[13].Value.Path
+      value: event:/Player/Heartbeat
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[0].Value.Guid.Data1
@@ -20986,6 +21002,38 @@ PrefabInstance:
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[11].Value.Guid.Data4
       value: -533357723
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[12].Value.Guid.Data1
+      value: -464703961
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[12].Value.Guid.Data2
+      value: 1121481291
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[12].Value.Guid.Data3
+      value: -1867226466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[12].Value.Guid.Data4
+      value: -960286258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[13].Value.Guid.Data1
+      value: -1320099471
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[13].Value.Guid.Data2
+      value: 1145133192
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[13].Value.Guid.Data3
+      value: 1316221623
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
+      propertyPath: _references._dict.Array.data[13].Value.Guid.Data4
+      value: -405171253
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _playerConfiguration._heavyBreathingFadeInDuration
