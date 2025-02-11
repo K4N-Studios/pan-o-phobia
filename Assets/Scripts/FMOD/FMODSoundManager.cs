@@ -24,10 +24,12 @@ public enum SoundType
     PlayerDamage,
     LightSwitchToggleSound,
     TimedLightSwitchToggleSound,
+    PlayerHeavyBreath,
+    PlayerHeartbeat
 }
 
 [Serializable]
-class AudioImplementationUnavailableException : Exception
+public class AudioImplementationUnavailableException : Exception
 {
     public AudioImplementationUnavailableException() { }
 
@@ -39,6 +41,8 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 {
     private Dictionary<SoundType, FMOD.Studio.EventInstance> _instances = new();
     [SerializeField] private SerializableDict<SoundType, FMODUnity.EventReference> _references = new();
+
+    public SerializableDict<SoundType, FMODUnity.EventReference> EventReferences => _references;
 
 #if UNITY_EDITOR
     [SerializeField] private SerializableDict<SoundType, bool> _activeInstances = new();
@@ -94,13 +98,22 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     {
         if (!_instances.ContainsKey(soundType))
         {
-            if (_references.TryGet(soundType, out FMODUnity.EventReference reference))
+            if (Application.isPlaying)
             {
+                if (_references.TryGet(soundType, out FMODUnity.EventReference reference))
+                {
 #if UNITY_EDITOR
-                _activeInstances.Add(soundType, false);
+                    _activeInstances.Add(soundType, false);
 #endif
-                _instances.Add(soundType, FMODUnity.RuntimeManager.CreateInstance(reference));
+                    _instances.Add(soundType, FMODUnity.RuntimeManager.CreateInstance(reference));
+                }
             }
+#if UNITY_EDITOR
+            else
+            {
+                _instances.Add(soundType, default);
+            }
+#endif
         }
 
         return _instances[soundType];
@@ -113,7 +126,7 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     /// <param name="type">sound type to obtain the behavior</param>
     /// <returns>The appropiate behavior for the given sound type</returns>
     /// <exception cref="AudioImplementationUnavailableException">The given sound type is not found</exception>
-    private SoundImplementation GetSoundImpl(SoundType type)
+    public SoundImplementation GetSoundImpl(SoundType type)
     {
         var instance = GetSoundInstance(type);
 
@@ -124,6 +137,8 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             SoundType.PlayerHeavyBreathing => new AudioPlayFadedBehavior(instance, fadeInDuration: _playerConfiguration._heavyBreathingFadeInDuration),
             SoundType.PlayerCollapse => new SoundImplementation(instance),
             SoundType.PlayerDamage => new AudioPlayIfNotRunningBehavior(instance),
+            SoundType.PlayerHeavyBreath => new SoundImplementation(instance),
+            SoundType.PlayerHeartbeat => new SoundImplementation(instance),
 
             // + Ambient sounds -----------------------------------------------------------
             SoundType.FearCrackingWoodEffect => new AudioPlayIfNotRunningBehavior(instance),
@@ -176,6 +191,12 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         _activeInstances.Update(sound, isPlaying);
 #endif
         return isPlaying;
+    }
+
+    public void SetVolume(SoundType sound, float newVolume)
+    {
+        var impl = GetSoundImpl(sound);
+        impl.SetVolume(newVolume);
     }
 
     public void Release(SoundType sound)

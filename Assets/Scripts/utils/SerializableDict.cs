@@ -5,13 +5,18 @@ using UnityEngine;
 public class SerializableDict<K, V>
 {
     [System.Serializable]
-    private class Register
+    private class Register<KK, VV>
     {
-        public K Key;
-        public V Value;
+        public KK Key;
+        public VV Value;
     }
 
-    [SerializeField] private List<Register> _dict = new();
+    [SerializeField] private List<Register<K, V>> _dict = new();
+
+    public int Count()
+    {
+        return _dict.Count;
+    }
 
     public bool TryGet(K key, out V value)
     {
@@ -28,7 +33,7 @@ public class SerializableDict<K, V>
         return false;
     }
 
-    private bool Contains(K key)
+    public bool Contains(K key)
     {
         return TryGet(key, out _);
     }

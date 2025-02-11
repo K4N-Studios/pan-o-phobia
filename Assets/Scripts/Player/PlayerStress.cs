@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum TimerMode
 {
