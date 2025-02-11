@@ -2,26 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(FMODSoundManager))]
 public class SoundManagerMissingReferences : Editor
 {
-    public override void OnInspectorGUI()
+    private void DetectMissingReferences(FMODSoundManager soundManager)
     {
-        DrawDefaultInspector();
-
-        var soundManager = (FMODSoundManager)target;
         var references = soundManager.EventReferences;
         var missingReferences = new List<string>();
 
-        foreach (var refString in Enum.GetNames(typeof(SoundType)))
+        foreach (SoundType expectedReference in Enum.GetValues(typeof(SoundType)))
         {
-            if (Enum.TryParse(refString, out SoundType expectedReference))
+            if (!references.Contains(expectedReference))
             {
-                if (!references.Contains(expectedReference))
-                {
-                    missingReferences.Add(expectedReference.ToString());
-                }
+                missingReferences.Add(expectedReference.ToString());
             }
         }
 
@@ -35,6 +30,52 @@ public class SoundManagerMissingReferences : Editor
             }
 
             EditorGUILayout.HelpBox(message.ToString(), MessageType.Warning);
+            return;
         }
+
+        EditorGUILayout.HelpBox("All sounds have their corresponding fmod sound reference", MessageType.Info);
+    }
+
+    private void DetectMissingSoundImplementations(FMODSoundManager soundManager)
+    {
+        List<SoundType> missingTypes = new();
+
+        foreach (SoundType soundType in Enum.GetValues(typeof(SoundType)))
+        {
+            try
+            {
+                soundManager.GetSoundImpl(soundType);
+            }
+            catch (AudioImplementationUnavailableException)
+            {
+                missingTypes.Add(soundType);
+            }
+            catch (Exception err)
+            {
+                Debug.LogWarning($"Error checking {soundType}: {err}");
+            }
+        }
+
+        if (missingTypes.Count > 0)
+        {
+            StringBuilder msg = new("You're missing sound behaviors for the next sounds:\n");
+
+            foreach (var type in missingTypes)
+            {
+                msg.AppendLine($"- {type}");
+            }
+
+            EditorGUILayout.HelpBox(msg.ToString(), MessageType.Error);
+            return;
+        }
+
+        EditorGUILayout.HelpBox("All sounds have their corresponding sound behaviors", MessageType.Info);
+    }
+
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+        DetectMissingReferences((FMODSoundManager)target);
+        DetectMissingSoundImplementations((FMODSoundManager)target);
     }
 }

@@ -1,14 +1,16 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAudioManager : WithSongManager
 {
     [SerializeField] private PlayerStress _playerStress;
-    [SerializeField] private float _stressHeavyBreathingPoint = 40.0f;
+    [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private GameStateManager _state;
 
     [Header("Songs")]
     [SerializeField] private SoundType _soundFootsteps = SoundType.PlayerFootsteps;
-    [SerializeField] private SoundType _soundHeavyBreathing = SoundType.PlayerHeavyBreathing;
+    [SerializeField] private SoundType _soundHeavyBreathing = SoundType.PlayerHeavyBreath;
+    [SerializeField] private SoundType _soundHeartbeat = SoundType.PlayerHeartbeat;
 
     private void CheckFootstepsSound()
     {
@@ -22,31 +24,55 @@ public class PlayerAudioManager : WithSongManager
         }
     }
 
-    private void CheckHeavyBreathingSound()
+    /// <summary>
+    /// We'll have more sound as the player gets more damage and less
+    /// health points. For the calculation of the hearbeat we can use
+    /// the next formula:
+    /// 
+    /// (1 - percentage / max)) ^ 0.6
+    /// e.g: (1 - 20 / 100) ^ 0.6 ~= 0.7
+    /// </summary>
+    private void PlayHeartbeatSound()
     {
-        var stress = _playerStress.StressAmount;
-        var isHeavyBreathingPlaying = _soundManager.IsPlaying(_soundHeavyBreathing);
+        float percentage = _playerHealth.CurrentHealth;
+        float maxHealth = _playerHealth.MaxHealth;
+        float heartbeatVolume = Mathf.Pow(1 - percentage / maxHealth, 0.6f);
 
-        if (isHeavyBreathingPlaying && _state.duringGameOverSplash)
+        if (!_soundManager.IsPlaying(_soundHeartbeat))
         {
-            _soundManager.Stop(_soundHeavyBreathing, fadeout: false);
-            return;
+            _soundManager.Play(_soundHeartbeat);
         }
 
-        if (stress >= _stressHeavyBreathingPoint && !isHeavyBreathingPlaying)
+        _soundManager.SetVolume(_soundHeartbeat, heartbeatVolume);
+    }
+
+    /// <summary>
+    /// As tim gets stressed over the time, the volume of the heavy breathing will
+    /// increase aswell, a local room light, master room light or the flashlight
+    /// should stop tim from stressing too much, that will imply lowing heavy breathing
+    /// quite a bit too.
+    /// </summary>
+    private void PlayHeavyBreathSound()
+    {
+        float stress = _playerStress.StressAmount;
+        float stressedVolume = stress / 100;
+
+        if (!_soundManager.IsPlaying(_soundHeavyBreathing))
         {
             _soundManager.Play(_soundHeavyBreathing);
         }
-        else if (stress < _stressHeavyBreathingPoint && isHeavyBreathingPlaying)
-        {
-            _soundManager.Stop(_soundHeavyBreathing);
-        }
+
+        _soundManager.SetVolume(_soundHeavyBreathing, stressedVolume);
     }
 
+    /// <summary>
+    /// To be called from `Update` on `PlayerController`
+    /// </summary>
     public void CheckSounds()
     {
         CheckFootstepsSound();
-        CheckHeavyBreathingSound();
+        PlayHeartbeatSound();
+        PlayHeavyBreathSound();
     }
 
     private bool IsPlayerMoving()
