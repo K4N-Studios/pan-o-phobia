@@ -10,9 +10,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private GameStateManager _state;
 
-    [SerializeField] private bool restrictDiagonalMovement = true; 
+    [SerializeField] private bool restrictDiagonalMovement = true;
 
     private bool _isMoving = false;
+    private float _lastXInputTime;
+    private float _lastYInputTime;
+    private float _prevInputX;
+    private float _prevInputY;
 
     public void HandleMovementInput()
     {
@@ -22,34 +26,44 @@ public class PlayerMovement : MonoBehaviour
         if (_state.duringGameOverSplash || _state.blockControlsRequest)
         {
             _movementInput = Vector2.zero;
+            return;
+        }
+
+        UpdateInputTiming(ref inputX, ref inputY);
+
+        if (restrictDiagonalMovement)
+        {
+            HandlePrioritizedMovement(inputX, inputY);
         }
         else
         {
-            if (restrictDiagonalMovement)
-            {
-                // Prioriza una sola dirección a la vez
-                if (inputX != 0)
-                {
-                    _movementInput = new Vector2(inputX, 0);
-                }
-                else if (inputY != 0)
-                {
-                    _movementInput = new Vector2(0, inputY);
-                }
-                else
-                {
-                    _movementInput = Vector2.zero;
-                }
-            }
-            else
-            {
-                // Movimiento libre, permitiendo diagonales
-                _movementInput = new Vector2(inputX, inputY).normalized;
-            }
+            _movementInput = new Vector2(inputX, inputY).normalized;
         }
 
         Move();
         HandleFlashLightMovement();
+    }
+
+    private void UpdateInputTiming(ref float inputX, ref float inputY)
+    {
+        if (inputX != 0 && _prevInputX == 0) _lastXInputTime = Time.time;
+        if (inputY != 0 && _prevInputY == 0) _lastYInputTime = Time.time;
+
+        _prevInputX = inputX;
+        _prevInputY = inputY;
+    }
+
+    private void HandlePrioritizedMovement(float inputX, float inputY)
+    {
+        if (inputX == 0 || inputY == 0)
+        {
+            _movementInput = new Vector2(inputX, inputY);
+            return;
+        }
+
+        _movementInput = _lastXInputTime > _lastYInputTime
+            ? new Vector2(inputX, 0)
+            : new Vector2(0, inputY);
     }
 
     public void HandleFlashLightMovement()
