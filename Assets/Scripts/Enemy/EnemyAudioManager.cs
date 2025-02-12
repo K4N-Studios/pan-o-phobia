@@ -1,29 +1,34 @@
 using UnityEngine;
 
-public class EnemyAudioManager : MonoBehaviour
+public class EnemyAudioManager : WithSongManager
 {
     [SerializeField] private SoundType _footstepsSound = SoundType.EnemyFootsteps;
     [SerializeField] private EnemyMovement _enemyMovement;
 
     private FMODUnity.StudioEventEmitter _eventEmitter;
 
-    private void Awake()
+    private void Start()
     {
-        FMODUnity.EventReference? reference;
-        if ((reference = FMODSoundManager.Instance.GetSoundEventReference(_footstepsSound)) == null)
-        {
-            return;
-        }
+        var reference = _soundManager.GetSoundEventReference(_footstepsSound);
 
-        _eventEmitter = gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
-        _eventEmitter.EventReference = reference.Value;
+        if (reference != null)
+        {
+            _eventEmitter = gameObject.AddComponent<FMODUnity.StudioEventEmitter>();
+            _eventEmitter.EventReference = reference.Value;
+        }
+    }
+
+    private void PlayWith3DAttributes()
+    {
+        _eventEmitter.EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject.transform));
+        _eventEmitter.Play();
     }
 
     private void Update()
     {
         if (!_enemyMovement.isWaiting && !_eventEmitter.IsPlaying())
         {
-            _eventEmitter.Play();
+            PlayWith3DAttributes();
         }
     }
 }
