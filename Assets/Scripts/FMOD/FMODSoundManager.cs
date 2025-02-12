@@ -25,7 +25,8 @@ public enum SoundType
     LightSwitchToggleSound,
     TimedLightSwitchToggleSound,
     PlayerHeavyBreath,
-    PlayerHeartbeat
+    PlayerHeartbeat,
+    CupboardToggle,
 }
 
 [Serializable]
@@ -155,6 +156,7 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             // + Map artifacts ------------------------------------------------------------
             SoundType.LightSwitchToggleSound => new AudioLightSwitchToggleBehavior(instance, _inUseLightSwitchInteractable),
             SoundType.TimedLightSwitchToggleSound => new AudioTimedLightSwitchToggleBehavior(instance, _inUseTimedSwitchInteractable),
+            SoundType.CupboardToggle => new AudioCupboardToggleBehavior(instance),
 
             ///////////////////////////////////////////////////////////////////////////////
             _ => throw new AudioImplementationUnavailableException(type),
