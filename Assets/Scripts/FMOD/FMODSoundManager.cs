@@ -201,6 +201,18 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         impl.SetVolume(newVolume);
     }
 
+    public float GetVolume(SoundType sound)
+    {
+        var impl = GetSoundImpl(sound);
+        return impl.GetVolume();
+    }
+
+    public void SetParameterByName(SoundType sound, string parameter, float value)
+    {
+        var impl = GetSoundImpl(sound);
+        impl.SetParameterByName(parameter, value);
+    }
+
     public void Release(SoundType sound)
     {
         GetSoundImpl(sound).Release();

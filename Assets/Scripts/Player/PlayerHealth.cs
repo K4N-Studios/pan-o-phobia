@@ -11,6 +11,7 @@ public class PlayerHealth : WithSongManager, IDamageable
     public int CurrentHealth => _currentHealth;
 
     [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerAudioManager _audioManager;
 
     [SerializeField] private int _maxHealt = 100;
     [SerializeField] private DialogTypewritterComponent _globalMessageTypewritter;
@@ -71,6 +72,7 @@ public class PlayerHealth : WithSongManager, IDamageable
 
         yield return new WaitForSeconds(1f);
 
+        _audioManager.FadeOutHeartbeat(4f);
         _soundManager.Play(_collapseSound);
     }
 
