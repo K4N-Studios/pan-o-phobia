@@ -41,6 +41,7 @@ public class AudioImplementationUnavailableException : Exception
 public class FMODSoundManager : Singleton<FMODSoundManager>
 {
     private Dictionary<SoundType, FMOD.Studio.EventInstance> _instances = new();
+    private Dictionary<SoundType, SoundImplementation> _behaviorsInstances = new();
     [SerializeField] private SerializableDict<SoundType, FMODUnity.EventReference> _references = new();
 
     public SerializableDict<SoundType, FMODUnity.EventReference> EventReferences => _references;
@@ -120,6 +121,14 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
         return _instances[soundType];
     }
 
+    private void CacheBehavior(SoundType soundType, SoundImplementation behavior)
+    {
+        if (!_behaviorsInstances.ContainsKey(soundType))
+        {
+            _behaviorsInstances.Add(soundType, behavior);
+        }
+    }
+
     /// <summary>
     /// Lists the behaviors for each sound type.
     /// NOTE: Sound references should be set on the unity inspector.
@@ -131,7 +140,13 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
     {
         var instance = GetSoundInstance(type);
 
-        return type switch
+        if (_behaviorsInstances.TryGetValue(type, out SoundImplementation behavior))
+        {
+            Debug.Log("reutilizing instance for behavior implementation of sound type: " + type);
+            return behavior;
+        }
+
+        SoundImplementation behaviorInstance = type switch
         {
             // + Player -------------------------------------------------------------------
             SoundType.PlayerFlashlightToggle => new AudioPlayerFlashlightToggleBehavior(instance, flashlightManager: _playerManagers._flashlightManager),
@@ -161,6 +176,10 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
             ///////////////////////////////////////////////////////////////////////////////
             _ => throw new AudioImplementationUnavailableException(type),
         };
+
+        CacheBehavior(type, behaviorInstance);
+
+        return behaviorInstance;
     }
 
     public void Play(SoundType sound)
