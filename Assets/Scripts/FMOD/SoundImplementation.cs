@@ -35,7 +35,15 @@ public class SoundImplementation
             return volume;
         }
 
-        return default(float);
+        return default;
+    }
+
+    public virtual void SetParameterByName(string parameter, float value)
+    {
+        if (_soundInstance.setParameterByName(parameter, value) != FMOD.RESULT.OK)
+        {
+            Debug.LogError($"SetParameterByName(${parameter}) failed");
+        }
     }
 
     public virtual void Play()

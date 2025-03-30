@@ -20299,6 +20299,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 130824590}
     - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 5952674523065374071}
+    - target: {fileID: 6328037376533770424, guid: 6c3f8e6b75089491582672f52631caaa, type: 3}
       propertyPath: _sfxDamageEventRef.Path
       value: event:/Player/PlayerDamage
       objectReference: {fileID: 0}
@@ -20825,7 +20829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[14].Value.Path
-      value: event:/Actions/CupboardToggle
+      value: event:/Player/Heartbeat
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[0].Value.Guid.Data1
@@ -21053,19 +21057,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[14].Value.Guid.Data1
-      value: 593640147
+      value: -1320099471
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[14].Value.Guid.Data2
-      value: 1084206808
+      value: 1145133192
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[14].Value.Guid.Data3
-      value: -598776923
+      value: 1316221623
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _references._dict.Array.data[14].Value.Guid.Data4
-      value: -1075406740
+      value: -405171253
       objectReference: {fileID: 0}
     - target: {fileID: 4297731149203819281, guid: 4220c351b601f47a0a62aa33080f3260, type: 3}
       propertyPath: _playerConfiguration._heavyBreathingFadeInDuration
