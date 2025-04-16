@@ -142,7 +142,6 @@ public class FMODSoundManager : Singleton<FMODSoundManager>
 
         if (_behaviorsInstances.TryGetValue(type, out SoundImplementation behavior))
         {
-            Debug.Log("reutilizing instance for behavior implementation of sound type: " + type);
             return behavior;
         }
 
