@@ -21252,6 +21252,18 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 130824590}
+    - target: {fileID: 2530075514016166849, guid: 8b1efbefcd3b147beae013cd97757086, type: 3}
+      propertyPath: backwardsTypewritterDelay
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566015878256060561, guid: 8b1efbefcd3b147beae013cd97757086, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5534661233732831865, guid: 8b1efbefcd3b147beae013cd97757086, type: 3}
+      propertyPath: m_margin.z
+      value: 38.272705
+      objectReference: {fileID: 0}
     - target: {fileID: 5534661233732831865, guid: 8b1efbefcd3b147beae013cd97757086, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
