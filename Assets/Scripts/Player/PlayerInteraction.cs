@@ -40,7 +40,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         gameState.RegisterCollectable(collectable.name);
         collectable.SetActive(false);
-        DialogueInvoker.Instance.FireDialogue("game_start");
     }
 
     private void ExcecuteInteraction()
